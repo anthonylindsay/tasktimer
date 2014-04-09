@@ -1,0 +1,23 @@
+/* line 3, ../sass/app.scss */
+.timer-container {
+  border: 1px solid gray;
+  float: left;
+  width: 25%;
+  list-style: none;
+  margin: 1%;
+  border-radius: 0.25em;
+}
+/* line 10, ../sass/app.scss */
+.timer-container .title {
+  border: 1px solid lightgray;
+}
+/* line 13, ../sass/app.scss */
+.timer-container div {
+  margin: 1em;
+}
+
+/* line 18, ../sass/app.scss */
+.active {
+  background-color: #f4f4f4;
+  border: 1px solid red;
+}
