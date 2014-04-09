@@ -68,9 +68,11 @@ $('document').ready(function() {
       app.select_container($new_timer_container);
       // Make containers clickable for starting timers.
       $new_timer_container.click(function(e) {
-      console.log($(this));
-      $(this).css('border', '1px solid red');
         app.select_container($(this));
+      });
+      // Make this containers delete button work.
+      $new_timer_container.find('.delete.button').click(function(e) {
+        $(this).parent().remove();
       });
     },
 
@@ -95,7 +97,6 @@ $('document').ready(function() {
 });
 
 
-// Make timer run when container 'selected'.
 
 // Reset all timers button.
 
