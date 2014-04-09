@@ -4,6 +4,7 @@ $('document').ready(function() {
     // function_name : function(){},
     start : function() {
       $timer_containers_wrapper = $('#containers-wrapper');
+      app.add_global_stop();
       app.add_container_button();
     },
 
