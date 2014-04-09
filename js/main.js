@@ -15,6 +15,14 @@ $('document').ready(function() {
       });
     },
 
+    add_global_stop : function() {
+      $('#main-content').prepend(global_stop_button_html.html);
+      $('#global-stop-button').click(function(e) {
+        e.preventDefault();
+        app.stop_all_timers();
+      });
+    },
+
     create_container : function() {
       // Create a new timer container.
       $timer_containers_wrapper.append(container_html.html);
