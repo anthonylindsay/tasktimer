@@ -6,6 +6,12 @@ $('document').ready(function() {
       $timer_containers_wrapper = $('#containers-wrapper');
       app.add_global_stop();
       app.add_container_button();
+      app.init_confirm_dialog();
+    },
+
+    init_confirm_dialog : function() {
+      $('#main-content').append(confirm_dialog_html.html);
+      $('#dialog-confirm').hide();
     },
 
     add_container_button : function() {
@@ -89,7 +95,25 @@ $('document').ready(function() {
       $containers.each(function() {
         $(this).removeClass('active');
       });
-    }
+    },
+
+    confirm_delete_dialog : function($target_timer) {
+      $( "#dialog-confirm" ).dialog( {
+        resizable: false,
+        height: 140,
+        modal: true,
+        buttons: {
+          "Confirm delete": function() {
+            $target_timer.parent().remove();
+            $( this ).dialog( "close" );
+          },
+          Cancel: function() {
+            $( this ).dialog( "close" );
+          }
+        }
+      });
+      $('.dialog-confirm').css('height', 'auto');
+    },
   }
 
   // Startup routine
