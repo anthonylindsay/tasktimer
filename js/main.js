@@ -49,9 +49,18 @@ $('document').ready(function() {
       app.add_new_timer($timers.length, $timers);
       // Ensure the titles are editable.
       $titles.each ( function() {
-        $(this)[0].onmousedown = function() {
-            this.focus();
+        $(this)[0].onmousedown = function(e) {
+          this.focus();
+          $(this).selectText();
         };
+        $(this).blur(function() {
+          if (window.getSelection) {
+            selection = window.getSelection();
+            range = document.createRange();
+            range.selectNodeContents(this);
+            selection.removeAllRanges();
+          }
+        });
       });
     },
 
@@ -147,7 +156,6 @@ jQuery.fn.selectText = function() {
 
 // Clear all button.
 
-// Delete container button in container.
 
 // make it all persistent via local storage.
 
