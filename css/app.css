@@ -1,4 +1,19 @@
-/* line 3, ../sass/app.scss */
+/* line 5, ../sass/app.scss */
+.button-form {
+  float: left;
+  margin: 0.25em;
+}
+/* line 8, ../sass/app.scss */
+.button-form button {
+  border-radius: 0.25em;
+}
+
+/* line 13, ../sass/app.scss */
+#containers-wrapper {
+  clear: both;
+}
+
+/* line 17, ../sass/app.scss */
 .timer-container {
   border: 1px solid gray;
   float: left;
@@ -7,17 +22,32 @@
   margin: 1%;
   border-radius: 0.25em;
 }
-/* line 10, ../sass/app.scss */
+/* line 24, ../sass/app.scss */
 .timer-container .title {
   border: 1px solid lightgray;
+  margin-right: 2em;
 }
-/* line 13, ../sass/app.scss */
+/* line 28, ../sass/app.scss */
 .timer-container div {
   margin: 1em;
 }
+/* line 31, ../sass/app.scss */
+.timer-container .delete.button {
+  float: right;
+  margin: 2px;
+  padding: 0 4px;
+  text-transform: lowercase;
+  border: 1px solid lightgray;
+  border-radius: 0.25em;
+}
 
-/* line 18, ../sass/app.scss */
+/* line 41, ../sass/app.scss */
 .active {
   background-color: #f4f4f4;
   border: 1px solid red;
+}
+
+/* line 46, ../sass/app.scss */
+.dialog-confirm {
+  height: auto;
 }
