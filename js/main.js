@@ -78,7 +78,8 @@ $('document').ready(function() {
       });
       // Make this containers delete button work.
       $new_timer_container.find('.delete.button').click(function(e) {
-        $(this).parent().remove();
+        var $target_timer = $(this);
+        app.confirm_delete_dialog($target_timer);
       });
     },
 
