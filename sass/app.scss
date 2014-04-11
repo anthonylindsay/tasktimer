@@ -1,4 +1,18 @@
+#main-content {
 
+}
+
+.button-form {
+  float: left;
+  margin: 0.25em;
+  button {
+    border-radius: 0.25em;
+  }
+}
+
+#containers-wrapper {
+  clear: both;
+}
 
 .timer-container {
   border: 1px solid gray;
@@ -9,12 +23,27 @@
   border-radius: 0.25em;
   .title {
     border: 1px solid lightgray;
+    margin-right: 2em;
   }
   div {
     margin: 1em;
+  }
+  .delete.button {
+    float: right;
+    margin: 2px;
+    padding: 0 4px;
+    text-transform: lowercase;
+    border: 1px solid lightgray;
+    border-radius: 0.25em;
   }
 }
 
 .active {
   background-color: #f4f4f4;
+  border: 1px solid red;
 }
+
+.dialog-confirm {
+  height: auto;
+}
+
