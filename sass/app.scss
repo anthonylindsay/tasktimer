@@ -1,5 +1,20 @@
-#main-content {
+body {
+  background: url(../img/grey_wash_wall.png);
+}
+#masthead {
+  background: url(../img/netrunnerLogo225_shadow.png)  bottom right no-repeat;
+  h1 {
+    margin-left: 1em;
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+    padding-bottom: 0.5em;
+    color: #f4f4f4;
+    text-shadow: .05em .05em .05em rgba(#000,.25), 0 0 0 hsl(0,100%,30%);
+  }
+}
 
+#main-content {
+  margin-left: 1em;
 }
 
 .button-form {
@@ -15,6 +30,7 @@
 }
 
 .timer-container {
+  background-color: #fff;
   border: 1px solid gray;
   float: left;
   width: 25%;
@@ -41,6 +57,9 @@
 .active {
   background-color: #f4f4f4;
   border: 1px solid red;
+  .timer {
+    background: url(../img/clock.gif) no-repeat right center ;
+  }
 }
 
 .dialog-confirm {
