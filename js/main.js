@@ -125,6 +125,7 @@ $('document').ready(function() {
         buttons: {
           "Confirm delete": function() {
             $target_timer.parent().remove();
+            favicon.badge(0);
             $( this ).dialog( "close" );
           },
           Cancel: function() {
@@ -160,15 +161,9 @@ jQuery.fn.selectText = function() {
   });
 };
 
-// Reset all timers button.
 
-// Reset timer button in container.
-
-// Clear all button.
-
+// TODO
 
 // make it all persistent via local storage.
 
-// Theme app.
-
-// Make title behave properly when you click on it. (selection, cursor placement, etc)
+// issue? when you click and drag it does not change the active container.
