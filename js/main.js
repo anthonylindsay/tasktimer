@@ -87,7 +87,7 @@ $('document').ready(function() {
 
     add_new_timer : function(count, $timers) {
       $new_timer = $timers.eq(count - 1);
-      $new_timer.runner();
+      $new_timer.runner({milliseconds : false});
       $new_timer_container = $new_timer.parent();
       app.select_container($new_timer_container);
       // Make containers clickable for starting timers.
