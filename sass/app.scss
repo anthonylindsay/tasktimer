@@ -22,6 +22,10 @@ body {
   margin: 0.25em;
   button {
     border-radius: 0.25em;
+    background-color: #8DC2E3;
+    &:hover {
+      background-color: #ABD4ED;
+    }
   }
 }
 
