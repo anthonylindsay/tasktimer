@@ -34,6 +34,7 @@ $('document').ready(function() {
       $('#global-stop-button').click(function(e) {
         e.preventDefault();
         app.stop_all_timers();
+        app.deactivate_all_containers();
       });
     },
 
