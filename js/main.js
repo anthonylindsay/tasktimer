@@ -1,5 +1,12 @@
 $('document').ready(function() {
+  // Create some global variables.
   var $timer_containers_wrapper;
+  var favicon=new Favico({
+    animation:'slide',
+    bgColor : '#F14040',
+    textColor : '#F14040',
+  });
+  // All the actual mechanics.
   app = {
     // function_name : function(){},
     start : function() {
