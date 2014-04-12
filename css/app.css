@@ -1,20 +1,50 @@
-/* line 5, ../sass/app.scss */
+/* line 1, ../sass/app.scss */
+body {
+  background: url(../img/grey_wash_wall.png);
+}
+
+/* line 4, ../sass/app.scss */
+#masthead {
+  background: url(../img/netrunnerLogo225_shadow.png) bottom right no-repeat;
+}
+/* line 6, ../sass/app.scss */
+#masthead h1 {
+  margin-left: 1em;
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+  padding-bottom: 0.5em;
+  color: #f4f4f4;
+  text-shadow: 0.05em 0.05em 0.05em rgba(0, 0, 0, 0.25), 0 0 0 #990000;
+}
+
+/* line 16, ../sass/app.scss */
+#main-content {
+  margin-left: 1em;
+}
+
+/* line 20, ../sass/app.scss */
 .button-form {
   float: left;
   margin: 0.25em;
 }
-/* line 8, ../sass/app.scss */
+/* line 23, ../sass/app.scss */
 .button-form button {
   border-radius: 0.25em;
+  background-color: #8DC2E3;
+}
+/* line 26, ../sass/app.scss */
+.button-form button:hover {
+  background-color: #ABD4ED;
 }
 
-/* line 13, ../sass/app.scss */
+/* line 32, ../sass/app.scss */
 #containers-wrapper {
   clear: both;
 }
 
-/* line 17, ../sass/app.scss */
+/* line 36, ../sass/app.scss */
 .timer-container {
+  background-color: #fff;
   border: 1px solid gray;
   float: left;
   width: 25%;
@@ -22,16 +52,16 @@
   margin: 1%;
   border-radius: 0.25em;
 }
-/* line 24, ../sass/app.scss */
+/* line 44, ../sass/app.scss */
 .timer-container .title {
   border: 1px solid lightgray;
   margin-right: 2em;
 }
-/* line 28, ../sass/app.scss */
+/* line 48, ../sass/app.scss */
 .timer-container div {
   margin: 1em;
 }
-/* line 31, ../sass/app.scss */
+/* line 51, ../sass/app.scss */
 .timer-container .delete.button {
   float: right;
   margin: 2px;
@@ -41,13 +71,17 @@
   border-radius: 0.25em;
 }
 
-/* line 41, ../sass/app.scss */
+/* line 61, ../sass/app.scss */
 .active {
   background-color: #f4f4f4;
   border: 1px solid red;
 }
+/* line 64, ../sass/app.scss */
+.active .timer {
+  background: url(../img/clock.gif) no-repeat right center;
+}
 
-/* line 46, ../sass/app.scss */
+/* line 69, ../sass/app.scss */
 .dialog-confirm {
   height: auto;
 }
