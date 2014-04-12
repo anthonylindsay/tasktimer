@@ -107,6 +107,7 @@ $('document').ready(function() {
       $timers.each(function() {
         $(this).runner('stop');
       });
+      favicon.badge(0);
     },
 
     deactivate_all_containers : function() {
