@@ -77,6 +77,7 @@ $('document').ready(function() {
       app.deactivate_all_containers();
       $(elem).addClass('active')
       elem.find('.timer').runner('start');
+      favicon.badge(1);
     },
 
     set_default_title : function(count, $titles) {
