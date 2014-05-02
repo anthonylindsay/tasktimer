@@ -1,7 +1,7 @@
 $('document').ready(function() {
   // Create some global variables.
   var $timer_containers_wrapper;
-  var favicon=new Favico({
+  var favicon = new Favico({
     animation:'slide',
     bgColor : '#F14040',
     textColor : '#F14040',
@@ -14,6 +14,7 @@ $('document').ready(function() {
       app.add_global_stop();
       app.add_container_button();
       app.init_confirm_dialog();
+      app.change_page_title('Timer');
     },
 
     init_confirm_dialog : function() {
@@ -78,6 +79,8 @@ $('document').ready(function() {
       $(elem).addClass('active')
       elem.find('.timer').runner('start');
       favicon.badge(1);
+      var timer_title = elem.find('.title').text();
+      app.change_page_title(timer_title);
     },
 
     set_default_title : function(count, $titles) {
@@ -108,6 +111,7 @@ $('document').ready(function() {
         $(this).runner('stop');
       });
       favicon.badge(0);
+      app.change_page_title('Stopped');
     },
 
     deactivate_all_containers : function() {
@@ -135,6 +139,10 @@ $('document').ready(function() {
       });
       $('.dialog-confirm').css('height', 'auto');
     },
+
+    change_page_title : function(title) {
+      document.title = title;
+    }
   }
 
   // Startup routine
@@ -167,3 +175,6 @@ jQuery.fn.selectText = function() {
 // make it all persistent via local storage.
 
 // issue? when you click and drag it does not change the active container.
+// need button to clear all timers.
+// issue: performance sucks when you try to drag whilst timers are running. (or does it?!)
+// maybe need to pause timer on mousedown and restart on mouseup
