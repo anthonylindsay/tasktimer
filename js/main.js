@@ -61,7 +61,14 @@ $('document').ready(function() {
         $(this)[0].onmousedown = function(e) {
           this.focus();
           $(this).selectText();
+          $(this).keypress(function( event ) {
+            if (event.which == 13) {
+              event.preventDefault();
+              app.clear_selection();
+            }
+          });
         };
+        
         $(this).blur(function() {
           if (window.getSelection) {
             selection = window.getSelection();
@@ -71,6 +78,27 @@ $('document').ready(function() {
           }
         });
       });
+    },
+
+    clear_selection: function() {
+      var sel;
+      if ( (sel = document.selection) && sel.empty ) {
+        sel.empty();
+      } 
+      else {
+        if (window.getSelection) {
+          window.getSelection().removeAllRanges();
+        }
+        var activeEl = document.activeElement;
+        if (activeEl) {
+          var tagName = activeEl.nodeName.toLowerCase();
+          if ( tagName == "textarea" ||
+             (tagName == "input" && activeEl.type == "text") ) {
+            // Collapse the selection to the end
+            activeEl.selectionStart = activeEl.selectionEnd;
+          }
+        }
+      }
     },
 
     select_container : function(elem) {
