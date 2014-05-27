@@ -38,11 +38,24 @@ body {
 }
 
 /* line 32, ../sass/app.scss */
+.help-button {
+  float: right;
+  margin: 0.25em 1em;
+  padding: 0.25em 0.5em;
+  border-radius: 0.25em;
+  background-color: #8DC2E3;
+}
+/* line 38, ../sass/app.scss */
+.help-button:hover {
+  background-color: #ABD4ED;
+}
+
+/* line 43, ../sass/app.scss */
 #containers-wrapper {
   clear: both;
 }
 
-/* line 36, ../sass/app.scss */
+/* line 47, ../sass/app.scss */
 .timer-container {
   background-color: #fff;
   border: 1px solid gray;
@@ -52,16 +65,16 @@ body {
   margin: 1%;
   border-radius: 0.25em;
 }
-/* line 44, ../sass/app.scss */
+/* line 55, ../sass/app.scss */
 .timer-container .title {
   border: 1px solid lightgray;
   margin-right: 2em;
 }
-/* line 48, ../sass/app.scss */
+/* line 59, ../sass/app.scss */
 .timer-container div {
   margin: 1em;
 }
-/* line 51, ../sass/app.scss */
+/* line 62, ../sass/app.scss */
 .timer-container .delete.button {
   float: right;
   margin: 2px;
@@ -71,17 +84,17 @@ body {
   border-radius: 0.25em;
 }
 
-/* line 61, ../sass/app.scss */
+/* line 72, ../sass/app.scss */
 .active {
   background-color: #f4f4f4;
   border: 1px solid red;
 }
-/* line 64, ../sass/app.scss */
+/* line 75, ../sass/app.scss */
 .active .timer {
   background: url(../img/clock.gif) no-repeat right center;
 }
 
-/* line 69, ../sass/app.scss */
+/* line 80, ../sass/app.scss */
 .dialog-confirm {
   height: auto;
 }
