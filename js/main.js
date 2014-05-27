@@ -14,12 +14,24 @@ $('document').ready(function() {
       app.add_global_stop();
       app.add_container_button();
       app.init_confirm_dialog();
+      app.add_help_button();
       app.change_page_title('Timer');
     },
 
     init_confirm_dialog : function() {
       $('#main-content').append(confirm_dialog_html.html);
       $('#dialog-confirm').hide();
+    },
+
+    add_help_button : function() {
+      $('#main-content').prepend(help_html.button);
+      $('#main-content').append(help_html.html);
+      $('#help-text').hide();
+      $('#help-button').click(function(e) {
+        e.preventDefault();
+        var dialog_width = window.innerWidth * 0.8;
+        $('#help-text').dialog({ width: dialog_width });
+      });
     },
 
     add_container_button : function() {
@@ -65,6 +77,7 @@ $('document').ready(function() {
             if (event.which == 13) {
               event.preventDefault();
               app.clear_selection();
+              // TODO set page title on setting timer title.
             }
           });
         };
