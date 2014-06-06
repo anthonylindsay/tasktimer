@@ -11,16 +11,56 @@ $('document').ready(function() {
     // function_name : function(){},
     start : function() {
       $timer_containers_wrapper = $('#containers-wrapper');
+      var stored_data = app.load_stored_data('interface_state');
+      if (stored_data) {
+        $timer_containers_wrapper.html(stored_data);
+        app.init_loaded_timers();
+      }
       app.add_global_stop();
+      app.add_clear_button();
       app.add_container_button();
       app.init_confirm_dialog();
       app.add_help_button();
       app.change_page_title('Timer');
+      app.autosave();
+    },
+
+    autosave : function() {
+      $elements = $(document.body);
+      $elements.add('form');
+      $elements.click(function() {
+        app.save_state();
+      });
+    },
+
+    load_stored_data : function(key) {
+      if ((typeof localStorage.getItem(key) != undefined) && (localStorage.getItem(key) != null) && (localStorage.getItem(key) != "null") && (localStorage.getItem(key) != "")) {
+        return localStorage.getItem(key);
+      }
+      else return false;
+    },
+
+    init_loaded_timers : function() {
+      $timers = $('.timer');
+      console.log($timers);
+      var i = 0;
+      $timers.each(function() {
+        var start_at = $(this).html();
+        start_at = parseInt(start_at) * 1000;
+        i++;
+        app.add_new_timer(i, $timers, start_at);
+      });
+      app.create_container();
+      var now = localStorage.getItem('interface_save_time');
+      $('#last-saved').html('Saved: ' + now.toString());
+      $('.timer').last().parent().remove();
     },
 
     init_confirm_dialog : function() {
       $('#main-content').append(confirm_dialog_html.html);
       $('#dialog-confirm').hide();
+      $('#main-content').append(confirm_dialog_all_html.html);
+      $('#dialog-confirm-all').hide();
     },
 
     add_help_button : function() {
@@ -38,7 +78,7 @@ $('document').ready(function() {
       $('#main-content').prepend(add_container_button_html.html);
       $('#add-container-button').click(function(e) {
         e.preventDefault();
-        app.create_container();
+        app.create_container(true);
       });
     },
 
@@ -51,7 +91,16 @@ $('document').ready(function() {
       });
     },
 
-    create_container : function() {
+    add_clear_button : function() {
+      $('#main-content').prepend(global_clear_button_html.html);
+      $('#global-clear-button').click(function(e) {
+        // Destroy all timers and clear storage.
+        var $timers = $('#containers-wrapper li');
+        app.confirm_delete_all_dialog($timers);
+      });
+    },
+
+    create_container : function(create) {
       // Create a new timer container.
       $timer_containers_wrapper.append(container_html.html);
       // Ensure the containers are sortable.
@@ -129,9 +178,12 @@ $('document').ready(function() {
       $titles.eq(count - 1).text(new_temp_title);
     },
 
-    add_new_timer : function(count, $timers) {
+    add_new_timer : function(count, $timers, start_at) {
       $new_timer = $timers.eq(count - 1);
-      $new_timer.runner({milliseconds : false});
+      if (start_at == undefined) {
+        start_at = 0;
+      }
+      $new_timer.runner({milliseconds : false, startAt : start_at});
       $new_timer_container = $new_timer.parent();
       app.select_container($new_timer_container);
       // Make containers clickable for starting timers.
@@ -181,9 +233,36 @@ $('document').ready(function() {
       $('.dialog-confirm').css('height', 'auto');
     },
 
+    confirm_delete_all_dialog : function($timers) {
+      $( "#dialog-confirm-all" ).dialog( {
+        resizable: false,
+        height: 140,
+        modal: true,
+        buttons: {
+          "Confirm delete": function() {
+            $timers.remove();
+            favicon.badge(0);
+            $( this ).dialog( "close" );
+          },
+          Cancel: function() {
+            $( this ).dialog( "close" );
+          }
+        }
+      });
+      $('.dialog-confirm-all').css('height', 'auto');
+    },
+
     change_page_title : function(title) {
       document.title = title;
-    }
+    },
+
+    save_state : function() {
+      $interface_state = $('#containers-wrapper').html();
+      localStorage.setItem('interface_state', $interface_state);
+      var now = new Date();
+      localStorage.setItem('interface_save_time', now);
+      $('#last-saved').html('Saved: ' + now.toString());
+    },
   }
 
   // Startup routine
