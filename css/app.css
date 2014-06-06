@@ -98,3 +98,9 @@ body {
 .dialog-confirm {
   height: auto;
 }
+
+/* line 84, ../sass/app.scss */
+#last-saved {
+  float: left;
+  clear: left;
+}
