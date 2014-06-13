@@ -166,6 +166,7 @@ $('document').ready(function() {
               event.preventDefault();
               app.clear_selection();
               // TODO set page title on setting timer title.
+              app.select_container($(this).parent());
             }
           });
         };
