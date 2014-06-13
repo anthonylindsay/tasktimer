@@ -8,7 +8,7 @@ $('document').ready(function() {
   });
   // All the actual mechanics.
   app = {
-    // function_name : function(){},
+    // function_name : function() {},
     start : function() {
       $timer_containers_wrapper = $('#containers-wrapper');
       var stored_data = app.load_stored_data('interface_state');
@@ -328,13 +328,3 @@ jQuery.fn.selectText = function() {
     }
   });
 };
-
-
-// TODO
-
-// make it all persistent via local storage.
-
-// issue? when you click and drag it does not change the active container.
-// need button to clear all timers.
-// issue: performance sucks when you try to drag whilst timers are running. (or does it?!)
-// maybe need to pause timer on mousedown and restart on mouseup
