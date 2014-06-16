@@ -24,6 +24,9 @@ Known Issues
 
 This project is still enjoying ongoing development so the javascript does still need to be optimised and minified.
 
-The timers are not yet persistent, so reloading the page will clear all timers.
+Roadmap
+---------
 
-The tab title does not yet change to reflect a newly named timer, until the timer is deselected and reselected.
+- Merge timers
+- title autocomplete
+- edit timers?
