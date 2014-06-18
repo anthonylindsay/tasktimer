@@ -29,4 +29,7 @@ Roadmap
 
 - Merge timers
 - title autocomplete
+- total all timers
+- tabular view
+- timer description
 - edit timers?
