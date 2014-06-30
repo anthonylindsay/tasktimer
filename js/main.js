@@ -2,7 +2,7 @@ $('document').ready(function() {
   // Create some global variables.
   var $timer_containers_wrapper;
   var favicon = new Favico({
-    animation:'slide',
+    animation: 'slide',
     bgColor : '#F14040',
     textColor : '#F14040',
   });
@@ -42,50 +42,9 @@ $('document').ready(function() {
 
     init_loaded_timers : function() {
       $timers = $('.timer');
-      console.log($timers);
       var i = 0;
       $timers.each(function() {
-        // Need to parse the HTML string and turn it into a millisecond value.
-        var start_at = $(this).html();
-        var time_components = start_at.split(':');
-        for (var j = 0; j < time_components.length; j++) {
-          time_components[j] = parseInt(time_components[j]);
-        }
-        // Figure out what we're looking at here.
-        if (time_components.length == 1) {
-          // Seconds.
-          start_at = time_components[0] * 1000;
-        }
-        else if (time_components.length == 2) {
-          // Minutes and seconds.
-          start_at = time_components[0] * 60;
-          start_at += time_components[1];
-          start_at = start_at * 1000;
-        }
-        else if (time_components.length == 3) {
-          // Hours, minutes and seconds.
-          // Hours -> seconds.
-          start_at = time_components[0] * 3600;
-          // Minutes -> seconds.
-          start_at += time_components[1] * 60;
-          // Seconds.
-          start_at += time_components[2];
-          // Milliseconds.
-          start_at = start_at * 1000;
-        }
-        else {
-          // Days, hours, minutes, seconds.
-          // Days -> seconds.
-          start_at = time_components[0] * 24 * 3600;
-          // Hours -> seconds.
-          start_at = time_components[1] * 3600;
-          // Minutes -> seconds.
-          start_at += time_components[2] * 60;
-          // Seconds.
-          start_at += time_components[3];
-          // Milliseconds.
-          start_at = start_at * 1000;
-        }
+        var start_at = app.parse_time(this);
         i++;
         app.add_new_timer(i, $timers, start_at);
       });
@@ -100,6 +59,51 @@ $('document').ready(function() {
       $('#dialog-confirm').hide();
       $('#main-content').append(confirm_dialog_all_html.html);
       $('#dialog-confirm-all').hide();
+    },
+
+    parse_time : function($timer_value) {
+      // Need to parse the HTML string and turn it into a millisecond value.
+      var start_at = $($timer_value).html();
+      var time_components = start_at.split(':');
+      for (var j = 0; j < time_components.length; j++) {
+        time_components[j] = parseInt(time_components[j]);
+      }
+      // Figure out what we're looking at here.
+      if (time_components.length == 1) {
+        // Seconds.
+        start_at = time_components[0] * 1000;
+      }
+      else if (time_components.length == 2) {
+        // Minutes and seconds.
+        start_at = time_components[0] * 60;
+        start_at += time_components[1];
+        start_at = start_at * 1000;
+      }
+      else if (time_components.length == 3) {
+        // Hours, minutes and seconds.
+        // Hours -> seconds.
+        start_at = time_components[0] * 3600;
+        // Minutes -> seconds.
+        start_at += time_components[1] * 60;
+        // Seconds.
+        start_at += time_components[2];
+        // Milliseconds.
+        start_at = start_at * 1000;
+      }
+      else {
+        // Days, hours, minutes, seconds.
+        // Days -> seconds.
+        start_at = time_components[0] * 24 * 3600;
+        // Hours -> seconds.
+        start_at = time_components[1] * 3600;
+        // Minutes -> seconds.
+        start_at += time_components[2] * 60;
+        // Seconds.
+        start_at += time_components[3];
+        // Milliseconds.
+        start_at = start_at * 1000;
+      }
+      return start_at;
     },
 
     add_help_button : function() {
