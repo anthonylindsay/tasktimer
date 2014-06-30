@@ -210,11 +210,19 @@ $('document').ready(function() {
     select_container : function(elem) {
       app.stop_all_timers();
       app.deactivate_all_containers();
-      $(elem).addClass('active')
-      elem.find('.timer').runner('start');
-      favicon.badge(1);
-      var timer_title = elem.find('.title').text();
-      app.change_page_title(timer_title);
+      // Check for active merge function.
+      if ($('.merge.button.pressed').length > 0) {
+        // Merge button has been pressed so do a merge.
+        app.merge(elem);
+      }
+      else {
+        // Start the timer.
+        $(elem).addClass('active')
+        elem.find('.timer').runner('start');
+        favicon.badge(1);
+        var timer_title = elem.find('.title').text();
+        app.change_page_title(timer_title);
+      }
     },
 
     set_default_title : function(count, $titles) {
@@ -234,11 +242,49 @@ $('document').ready(function() {
       $new_timer_container.click(function(e) {
         app.select_container($(this));
       });
-      // Make this containers delete button work.
+      // Make this containers delete and merge buttons work.
       $new_timer_container.find('.delete.button').click(function(e) {
         var $target_timer = $(this);
         app.confirm_delete_dialog($target_timer);
       });
+      $new_timer_container.find('.merge.button').click(function(e) {
+        e.stopPropagation();
+        var $target_timer = $(this);
+        $target_timer.addClass('pressed');
+        app.message('Choose a target timer to merge.');
+      });
+    },
+
+    message : function(text) {
+      var $system_message = $('#messages');
+      $system_message.html(text);
+      $system_message.hide();
+      $system_message.slideDown('fast','linear', function(){
+        setTimeout("$('#messages').slideUp('fast','linear')", 4000);
+      });
+    },
+
+    merge : function($elem) {
+      // Target element is passed in.
+      var $target = $elem;
+      // Find the original element
+      var $original = $('.timer-container .pressed').parent();
+      $original.find('.pressed').removeClass('pressed');
+      // Write messages.
+      // Select a candidate.
+      // Get timer value of merge_timer and candidate.
+      var time_1 = $target.find('.timer');
+      time_1 = app.parse_time(time_1);
+      var time_2 = $original.find('.timer');
+      time_2 = app.parse_time(time_2);
+      // Merge timers.
+      var new_time = time_1 + time_2;
+      // Remove the original timer.
+      $original.remove();
+      // Update the remaining timer.
+      $updated_timer = $target.find('.timer');
+      $updated_timer.runner({milliseconds : false, startAt : new_time});
+      app.message('Merge complete.');
     },
 
     stop_all_timers : function() {
