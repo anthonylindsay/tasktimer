@@ -59,13 +59,19 @@ body {
   div {
     margin: 1em;
   }
-  .delete.button {
+  .delete.button, .merge.button {
     float: right;
+    clear: right;
+    width: 12px;
+    text-align: center;
     margin: 2px;
     padding: 0 4px;
     text-transform: lowercase;
     border: 1px solid lightgray;
     border-radius: 0.25em;
+    &.pressed {
+      background: lightgray;
+    }
   }
 }
 
