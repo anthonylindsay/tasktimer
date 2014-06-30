@@ -4,7 +4,7 @@ var global_stop_button_html = {"html":"<form id='global-stop-form' class='button
 
 var global_clear_button_html = {"html":"<form id='global-clear-form' class='button-form'><button id='global-clear-button' value='clear' type='button'>- clear</button></form>"}
 
-var container_html = {"html":"<li class='timer-container'><div class='delete button'>x</div><div class='title' contenteditable='true'></div><div class='timer'></div></li>"}
+var container_html = {"html":"<li class='timer-container'><div class='delete button'>x</div><div class='merge button'>&#x29C9;</div><div class='title' contenteditable='true'></div><div class='timer'></div></li>"}
 
 var confirm_dialog_html = {"html":"<div id='dialog-confirm' class='dialog-confirm' title='Delete this timer?'> <span class='ui-icon ui-icon-alert' style='float:left; margin:0 7px 20px 0;'></span>Are you sure?</div>"}
 
