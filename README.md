@@ -30,6 +30,8 @@ Roadmap
 
 - Style system messages
 - more system messages
+- highlight title on addition of new timer
+- fix title highlight behaviour after initial click
 - title autocomplete
 - total all timers
 - tabular view
