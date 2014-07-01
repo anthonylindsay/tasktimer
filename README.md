@@ -17,6 +17,7 @@ How to use
 - Simply click on a timer to activate it.
 - The stop button stops all timers.
 - A timer can be deleted at any point.
+- Timers can be merged together.
 
 
 Known Issues
@@ -27,9 +28,14 @@ This project is still enjoying ongoing development so the javascript does still 
 Roadmap
 ---------
 
-- Merge timers
+- Style system messages
+- more system messages
+- highlight title on addition of new timer
+- fix title highlight behaviour after initial click
 - title autocomplete
 - total all timers
 - tabular view
 - timer description
+- labels
+- log
 - edit timers?
