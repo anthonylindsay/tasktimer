@@ -87,12 +87,18 @@ body {
   height: auto;
 }
 
-#last-saved {
+#last-saved,
+#total-time {
   float: left;
   clear: left;
   color: white;
   font-size: 0.6em;
   margin: 0.5em;
+}
+#total-time {
+  float: right;
+  clear: right;
+  margin-right: 1.5em;
 }
 
 #messages {
