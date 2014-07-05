@@ -107,7 +107,8 @@ body {
 }
 
 /* line 90, ../sass/app.scss */
-#last-saved {
+#last-saved,
+#total-time {
   float: left;
   clear: left;
   color: white;
@@ -116,6 +117,13 @@ body {
 }
 
 /* line 98, ../sass/app.scss */
+#total-time {
+  float: right;
+  clear: right;
+  margin-right: 1.5em;
+}
+
+/* line 104, ../sass/app.scss */
 #messages {
   padding: 0.25em;
   color: #CBFFB3;
