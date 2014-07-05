@@ -18,6 +18,7 @@ How to use
 - The stop button stops all timers.
 - A timer can be deleted at any point.
 - Timers can be merged together.
+- Total tracked time can be displayed/updated.
 
 
 Known Issues
@@ -28,14 +29,13 @@ This project is still enjoying ongoing development so the javascript does still 
 Roadmap
 ---------
 
-- Style system messages
+- Disable timers (usecase: You've finished the task and want the display to reflect that, but don't want to delete it yet.)
 - more system messages
 - highlight title on addition of new timer
 - fix title highlight behaviour after initial click
 - title autocomplete
-- total all timers
 - tabular view
 - timer description
 - labels
 - log
-- edit timers?
+- edit timers / shift time from one timer to another
