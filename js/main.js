@@ -249,9 +249,11 @@ $('document').ready(function() {
       });
       $new_timer_container.find('.merge.button').click(function(e) {
         e.stopPropagation();
+        // Ensure that no other timers are 'pressed'.
+        $('.pressed').not(this).removeClass('pressed');
         var $target_timer = $(this);
         $target_timer.addClass('pressed');
-        app.message('Choose a target timer to merge.');
+        app.message('Choose a target timer to merge into.');
       });
     },
 
@@ -270,6 +272,11 @@ $('document').ready(function() {
       // Find the original element
       var $original = $('.timer-container .pressed').parent();
       $original.find('.pressed').removeClass('pressed');
+      // Make sure you're not merging the same timer.
+      if ($original[0] == $target[0]) {
+        app.message('Cannot merge the same timer into itself.');
+        return;
+      }
       // Write messages.
       // Select a candidate.
       // Get timer value of merge_timer and candidate.
