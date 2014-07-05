@@ -16,11 +16,12 @@ $('document').ready(function() {
         $timer_containers_wrapper.html(stored_data);
         app.init_loaded_timers();
       }
+      app.add_help_button();
+      app.add_total_button();
       app.add_global_stop();
       app.add_clear_button();
       app.add_container_button();
       app.init_confirm_dialog();
-      app.add_help_button();
       app.change_page_title('Timer');
       app.autosave();
     },
@@ -140,6 +141,29 @@ $('document').ready(function() {
         // Destroy all timers and clear storage.
         var $timers = $('#containers-wrapper li');
         app.confirm_delete_all_dialog($timers);
+      });
+    },
+
+    add_total_button : function() {
+      $('#main-content').prepend(global_total_button_html.html);
+      $('#global-total-button').click(function(e) {
+        // Add up the value of all timers.
+        // Get all timers.
+        var $timers = $('.timer-container .timer');
+        var total_time = 0;
+        // Get values.
+        $timers.each(function() {
+          // Parse values.
+          var this_time = app.parse_time(this);
+          // Sum.
+          total_time += this_time;
+        });
+        // Format time.
+        // The total is in milliseconds. Convert to seconds.
+        total_time = total_time/1000;
+        var time_string = total_time.toString();
+        var formatted_time = time_string.toHHMMSS();
+        $('#total-time').html('Total timed: ' + formatted_time);
       });
     },
 
@@ -385,3 +409,20 @@ jQuery.fn.selectText = function() {
     }
   });
 };
+
+
+/**
+ * Format a seconds string to a human readable time.
+ */
+String.prototype.toHHMMSS = function () {
+  var sec_num = parseInt(this, 10); // don't forget the second param
+  var hours   = Math.floor(sec_num / 3600);
+  var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+  var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+  if (hours   < 10) {hours   = "0"+hours;}
+  if (minutes < 10) {minutes = "0"+minutes;}
+  if (seconds < 10) {seconds = "0"+seconds;}
+  var time    = hours+':'+minutes+':'+seconds;
+  return time;
+}
