@@ -193,7 +193,6 @@ $('document').ready(function() {
             if (event.which == 13) {
               event.preventDefault();
               app.clear_selection();
-              // TODO set page title on setting timer title.
               app.select_container($(this).parent());
             }
           });
@@ -251,7 +250,17 @@ $('document').ready(function() {
 
     set_default_title : function(count, $titles) {
       var new_temp_title = 'Untitled ' + count;
-      $titles.eq(count - 1).text(new_temp_title);
+      var new_title_node = $titles.eq(count - 1);
+      new_title_node.text(new_temp_title);
+      var selection = window.getSelection();
+      new_title_node.selectText();
+      $(new_title_node).keypress(function( event ) {
+        if (event.which == 13) {
+          event.preventDefault();
+          app.clear_selection();
+          app.select_container($(this).parent());
+        }
+      });
     },
 
     add_new_timer : function(count, $timers, start_at) {
