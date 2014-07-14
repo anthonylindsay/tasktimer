@@ -4,9 +4,11 @@ var global_stop_button_html = {"html":"<form id='global-stop-form' class='button
 
 var global_clear_button_html = {"html":"<form id='global-clear-form' class='button-form'><button id='global-clear-button' value='clear' type='button' title='Clear all timers and remove from memory.'>- clear</button></form>"}
 
-var container_html = {"html":"<li class='timer-container'><div class='delete button'>x</div><div class='merge button'>&#x29C9;</div><div class='title' contenteditable='true'></div><div class='timer'></div></li>"}
+var container_html = {"html":"<li class='timer-container'><div class='delete button'>x</div><div class='merge button'>&#x29C9;</div><div class='edit button'>&plusmn;</div><div class='title' contenteditable='true'></div><div class='timer'></div></li>"}
 
 var confirm_dialog_html = {"html":"<div id='dialog-confirm' class='dialog-confirm' title='Delete this timer?'> <span class='ui-icon ui-icon-alert' style='float:left; margin:0 7px 20px 0;'></span>Are you sure?</div>"}
+
+var edit_dialog_html = {"html":"<div id='dialog-edit' class='dialog-edit' title='Shift time'> <form><label>Minutes</label><input type='number' id='amount' value='15' class='number ui-widget-content ui-corner-all'><input type='submit' tabindex='-1' style='position:absolute; top:-1000px'></form></div>"}
 
 var confirm_dialog_all_html = {"html":"<div id='dialog-confirm-all' class='dialog-confirm' title='Delete all timers?'> <span class='ui-icon ui-icon-alert' style='float:left; margin:0 7px 20px 0;'></span>Are you sure?</div>"}
 
