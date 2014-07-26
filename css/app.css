@@ -1,135 +1,285 @@
-/* line 1, ../sass/app.scss */
+/**
+ * @file - simple file to house our variables
+ */
+/**
+ * @file - simple file to house our mixins
+ */
+/* line 5, ../sass/app.scss */
 body {
-  background: url(../img/grey_wash_wall.png);
+  background: whitesmoke;
+  color: #333333;
+  font-family: sans-serif;
+}
+/* line 9, ../sass/app.scss */
+body a {
+  text-decoration: none;
 }
 
-/* line 4, ../sass/app.scss */
+/* line 14, ../sass/app.scss */
+#page {
+  margin: auto;
+  max-width: 90%;
+}
+
+/* line 18, ../sass/app.scss */
 #masthead {
   background: url(../img/netrunnerLogo225_shadow.png) bottom right no-repeat;
 }
-/* line 6, ../sass/app.scss */
+/* line 20, ../sass/app.scss */
 #masthead h1 {
-  margin-left: 1em;
-  margin-top: 0.25em;
+  color: #333333;
   margin-bottom: 0.25em;
+  margin-top: 0.25em;
   padding-bottom: 0.5em;
-  color: #f4f4f4;
   text-shadow: 0.05em 0.05em 0.05em rgba(0, 0, 0, 0.25), 0 0 0 #990000;
 }
 
-/* line 16, ../sass/app.scss */
-#main-content {
-  margin-left: 1em;
-}
-
-/* line 20, ../sass/app.scss */
+/* line 29, ../sass/app.scss */
 .button-form {
   float: left;
   margin: 0.25em;
 }
-/* line 23, ../sass/app.scss */
-.button-form button {
-  border-radius: 0.25em;
-  background-color: #8DC2E3;
-}
-/* line 26, ../sass/app.scss */
-.button-form button:hover {
-  background-color: #ABD4ED;
-}
-
 /* line 32, ../sass/app.scss */
-.help-button {
-  float: right;
-  margin: 0.25em 1em;
-  padding: 0.25em 0.5em;
-  border-radius: 0.25em;
-  background-color: #8DC2E3;
+.button-form button {
+  -moz-border-radius: 0.25rem;
+  -webkit-border-radius: 0.25rem;
+  border-radius: 0.25rem;
+  /* 3 */
+  /* 3 */
+  /* 4 */
+  /* 6 */
+  /* 6 */
+  /* 7 */
+  /* 4 */
+  /* 6 */
+  /* 6 */
+  /* 7 */
+  padding: 5px 10px;
+  /* 9 */
+  padding: 0.5rem 1rem;
+  /* 9 */
+  border: 1px solid #333333;
+  background-color: #8dc2e3;
+  color: #333333;
 }
-/* line 38, ../sass/app.scss */
-.help-button:hover {
-  background-color: #ABD4ED;
+/* line 57, ../sass/mixins.scss */
+.button-form button:hover {
+  background-color: #b6d8ed;
 }
 
-/* line 43, ../sass/app.scss */
+/* line 37, ../sass/app.scss */
+.help-button {
+  -moz-border-radius: 0.25rem;
+  -webkit-border-radius: 0.25rem;
+  border-radius: 0.25rem;
+  /* 3 */
+  /* 3 */
+  /* 4 */
+  /* 6 */
+  /* 6 */
+  /* 7 */
+  /* 4 */
+  /* 6 */
+  /* 6 */
+  /* 7 */
+  padding: 5px 10px;
+  /* 9 */
+  padding: 0.5rem 1rem;
+  /* 9 */
+  border: 1px solid #333333;
+  background-color: #8dc2e3;
+  color: #333333;
+  background: #ff5656;
+  float: right;
+  margin: 0.25em 0;
+}
+/* line 57, ../sass/mixins.scss */
+.help-button:hover {
+  background-color: #b6d8ed;
+}
+
+/* line 45, ../sass/app.scss */
 #containers-wrapper {
   clear: both;
 }
 
-/* line 47, ../sass/app.scss */
+/* line 49, ../sass/app.scss */
 .timer-container {
-  background-color: #fff;
+  background-color: white;
   border: 1px solid gray;
-  float: left;
-  width: 25%;
-  list-style: none;
-  margin: 1%;
   border-radius: 0.25em;
+  box-shadow: 0px 8px 8px -7px #333333;
+  float: left;
+  list-style: none;
+  border-radius: 0.25em;
+  margin: 1% 2% 1% 0;
+  width: calc(23% - 2px);
 }
-/* line 55, ../sass/app.scss */
+/* line 57, ../sass/app.scss */
 .timer-container .timer {
   margin-right: 2em;
 }
-/* line 58, ../sass/app.scss */
-.timer-container .title {
-  border: 1px solid lightgray;
-  margin-right: 2em;
-}
 /* line 62, ../sass/app.scss */
+.timer-container .title {
+  /* 3 */
+  /* 3 */
+  /* 4 */
+  /* 6 */
+  /* 6 */
+  /* 7 */
+  padding: 10px;
+  /* 9 */
+  padding: 1rem;
+  /* 9 */
+  /* 3 */
+  /* 3 */
+  /* 4 */
+  /* 6 */
+  /* 6 */
+  /* 7 */
+  margin-right: 20px;
+  /* 9 */
+  margin-right: 2rem;
+  /* 9 */
+  -moz-border-radius: 0.25rem;
+  -webkit-border-radius: 0.25rem;
+  border-radius: 0.25rem;
+  background: whitesmoke;
+  border: 1px solid lightgray;
+}
+/* line 69, ../sass/app.scss */
 .timer-container div {
   margin: 1em;
 }
-/* line 65, ../sass/app.scss */
+/* line 73, ../sass/app.scss */
 .timer-container .button {
   float: right;
-  clear: right;
-  width: 12px;
-  text-align: center;
-  margin: 2px;
-  padding: 0 4px;
-  text-transform: lowercase;
+}
+/* line 76, ../sass/app.scss */
+.timer-container .delete.button, .timer-container .merge.button {
   border: 1px solid lightgray;
   border-radius: 0.25em;
+  clear: right;
+  float: right;
+  width: 12px;
+  margin: 2px;
+  padding: 0 4px;
+  text-align: center;
+  text-transform: lowercase;
 }
-/* line 75, ../sass/app.scss */
-.timer-container .button.pressed {
+/* line 86, ../sass/app.scss */
+.timer-container .delete.button.pressed, .timer-container .merge.button.pressed {
   background: lightgray;
 }
 
-/* line 81, ../sass/app.scss */
+/* line 92, ../sass/app.scss */
 .active {
-  background-color: #f4f4f4;
-  border: 1px solid red;
+  background-color: gainsboro;
+  border: 1px solid #ff5656;
 }
-/* line 84, ../sass/app.scss */
+/* line 95, ../sass/app.scss */
 .active .timer {
   background: url(../img/clock.gif) no-repeat right center;
 }
+/* line 98, ../sass/app.scss */
+.active .title {
+  background: white;
+  border: 1px solid #b3b3b3;
+}
 
-/* line 89, ../sass/app.scss */
+/* line 104, ../sass/app.scss */
 .dialog-confirm {
   height: auto;
 }
 
-/* line 93, ../sass/app.scss */
+/* line 108, ../sass/app.scss */
 #last-saved,
 #total-time {
-  float: left;
+  /* 3 */
+  /* 3 */
+  /* 4 */
+  /* 6 */
+  /* 6 */
+  /* 7 */
+  font-size: 7.5px;
+  /* 9 */
+  font-size: 0.75rem;
+  /* 9 */
+  /* 3 */
+  /* 3 */
+  /* 4 */
+  /* 6 */
+  /* 6 */
+  /* 7 */
+  /* 4 */
+  /* 6 */
+  /* 6 */
+  /* 7 */
+  /* 4 */
+  /* 6 */
+  /* 6 */
+  /* 7 */
+  /* 4 */
+  /* 5 */
+  margin: 13px 5px 5px 0;
+  /* 9 */
+  margin: 1.3rem 0.5rem 0.5rem 0;
+  /* 9 */
   clear: left;
-  color: white;
-  font-size: 0.6em;
-  margin: 0.5em;
+  color: #333333;
+  float: left;
 }
 
-/* line 101, ../sass/app.scss */
+/* line 116, ../sass/app.scss */
 #total-time {
-  float: right;
   clear: right;
-  margin-right: 1.5em;
+  float: right;
 }
 
-/* line 107, ../sass/app.scss */
+/* line 121, ../sass/app.scss */
 #messages {
-  padding: 0.25em;
   color: #CBFFB3;
+  padding: 0.25em;
   text-align: center;
+}
+
+/* line 127, ../sass/app.scss */
+#footer {
+  /* 3 */
+  /* 3 */
+  /* 4 */
+  /* 6 */
+  /* 6 */
+  /* 7 */
+  font-size: 7.5px;
+  /* 9 */
+  font-size: 0.75rem;
+  /* 9 */
+  /* 3 */
+  /* 3 */
+  /* 4 */
+  /* 6 */
+  /* 6 */
+  /* 7 */
+  /* 4 */
+  /* 5 */
+  padding: 10px 0;
+  /* 9 */
+  padding: 1rem 0;
+  /* 9 */
+  background-color: #8dc2e3;
+  border-top: 1px solid #333333;
+  bottom: 0;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+/* line 136, ../sass/app.scss */
+#footer a {
+  color: whitesmoke;
+}
+/* line 138, ../sass/app.scss */
+#footer a:focus, #footer a:hover {
+  color: #333333;
+  text-decoration: underline;
 }

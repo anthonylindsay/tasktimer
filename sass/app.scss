@@ -1,43 +1,45 @@
+@import "compass/css3";
+@import "variables";
+@import "mixins";
+
 body {
-  background: url(../img/grey_wash_wall.png);
+  background: $white;
+  color: $black;
+  font-family: sans-serif;
+  a {
+    text-decoration: none;
+  }
+}
+
+#page {
+  margin: auto;
+  max-width: 90%;
 }
 #masthead {
   background: url(../img/netrunnerLogo225_shadow.png)  bottom right no-repeat;
   h1 {
-    margin-left: 1em;
-    margin-top: 0.25em;
+    color: $black;
     margin-bottom: 0.25em;
+    margin-top: 0.25em;
     padding-bottom: 0.5em;
-    color: #f4f4f4;
     text-shadow: .05em .05em .05em rgba(#000,.25), 0 0 0 hsl(0,100%,30%);
   }
-}
-
-#main-content {
-  margin-left: 1em;
 }
 
 .button-form {
   float: left;
   margin: 0.25em;
   button {
-    border-radius: 0.25em;
-    background-color: #8DC2E3;
-    &:hover {
-      background-color: #ABD4ED;
-    }
+    @include button;
   }
 }
 
 .help-button {
+  @include button;
+  background: $red;
   float: right;
-  margin: 0.25em 1em;
-  padding: 0.25em 0.5em;
-  border-radius: 0.25em;
-  background-color: #8DC2E3;
-  &:hover {
-    background-color: #ABD4ED;
-  }
+  margin: 0.25em 0;
+  // padding: 0.25em 0.5em;
 }
 
 #containers-wrapper {
@@ -45,33 +47,42 @@ body {
 }
 
 .timer-container {
-  background-color: #fff;
+  background-color: white;
   border: 1px solid gray;
+  border-radius: 0.25em;
+  box-shadow: 0px 8px 8px -7px $black;
   float: left;
-  width: 25%;
   list-style: none;
-  margin: 1%;
   border-radius: 0.25em;
   .timer {
     margin-right: 2em;
   }
+  margin: 1% 2% 1% 0;
+  width: calc(23% - 2px);
   .title {
+    @include rem(padding, 1rem);
+    @include rem(margin-right, 2rem);
+    @include border-radius-default;
+    background: $white;
     border: 1px solid lightgray;
-    margin-right: 2em;
   }
   div {
     margin: 1em;
   }
+
   .button {
     float: right;
-    clear: right;
-    width: 12px;
-    text-align: center;
-    margin: 2px;
-    padding: 0 4px;
-    text-transform: lowercase;
+  }
+  .delete.button, .merge.button {
     border: 1px solid lightgray;
     border-radius: 0.25em;
+    clear: right;
+    float: right;
+    width: 12px;
+    margin: 2px;
+    padding: 0 4px;
+    text-align: center;
+    text-transform: lowercase;
     &.pressed {
       background: lightgray;
     }
@@ -79,10 +90,14 @@ body {
 }
 
 .active {
-  background-color: #f4f4f4;
-  border: 1px solid red;
+  background-color: darken($white, 10%);
+  border: 1px solid $red;
   .timer {
     background: url(../img/clock.gif) no-repeat right center ;
+  }
+  .title {
+    background: white;
+    border: 1px solid lighten($black, 50%);
   }
 }
 
@@ -92,20 +107,38 @@ body {
 
 #last-saved,
 #total-time {
-  float: left;
+  @include rem(font-size, 0.75rem);
+  @include rem(margin, 1.3rem 0.5rem 0.5rem 0);
   clear: left;
-  color: white;
-  font-size: 0.6em;
-  margin: 0.5em;
+  color: $black;
+  float: left;
 }
 #total-time {
-  float: right;
   clear: right;
-  margin-right: 1.5em;
+  float: right;
 }
 
 #messages {
-  padding: 0.25em;
   color: #CBFFB3;
+  padding: 0.25em;
   text-align: center;
+}
+
+#footer {
+  @include rem(font-size, 0.75rem);
+  @include rem(padding, 1rem 0);
+  background-color: $blue;
+  border-top: 1px solid $black;
+  bottom: 0;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  a {
+    color: $white;
+    &:focus,
+    &:hover {
+      color: $black;
+      text-decoration: underline;
+    }
+  }
 }
