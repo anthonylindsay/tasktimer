@@ -290,11 +290,73 @@ $('document').ready(function() {
       $new_timer_container.find('.merge.button').click(function(e) {
         e.stopPropagation();
         // Ensure that no other timers are 'pressed'.
-        $('.pressed').not(this).removeClass('pressed');
-        var $target_timer = $(this);
-        $target_timer.addClass('pressed');
+        app.press_element(this);
         app.message('Choose a target timer to merge into.');
       });
+      $new_timer_container.find('.edit.button').click(function(e) {
+        e.stopImmediatePropagation();
+        app.press_element(this);
+        var time_shift_dialog = $( "#dialog-edit" ).dialog({
+          autoOpen: false,
+          height: 300,
+          width: 350,
+          modal: true,
+          buttons: {
+            "Shift time to another timer": app.shift_time,
+            Cancel: function() {
+              time_shift_dialog.dialog( "close" );
+              $('.pressed').removeClass('pressed');
+            }
+          },
+          close: function() {
+            // $('.pressed').removeClass('pressed');
+          }
+        });
+        time_shift_dialog.dialog( "open" );
+      });
+    },
+
+    press_element: function(elem) {
+      $('.pressed').not(elem).removeClass('pressed');
+      var $target_timer = $(elem);
+      $target_timer.addClass('pressed');
+    },
+
+    update_shifted_timers: function(elem) {
+      $target = $(elem);
+      var $target_timer = $target.find('.timer');
+      var target_timer_value = app.parse_time($target_timer);
+      var $origin = $('.button.edit.pressed').parent();
+      var origin_time = $origin.find('.timer');
+      var origin_timer_value = app.parse_time(origin_time);
+      app.message('Choose a timer to shift to.');
+      target_timer_value += time_shift_value;
+      origin_timer_value -= time_shift_value;
+      // These timer updates are all chained to fire one after another.
+      app.update_timer($origin, origin_timer_value,
+        app.update_timer($target, target_timer_value,
+          app.unpress_elements()
+        )
+      );
+      app.message('Time successfully shifted.');
+    },
+
+    unpress_elements: function() {
+      $('.pressed').removeClass('pressed');
+    },
+
+    shift_time: function() {
+      $( "#dialog-edit" ).dialog('close');
+      time_shift_value = $( "#dialog-edit #amount").val() * 60 * 1000;
+
+      // Origin.
+      var $origin = $('.pressed');
+      var origin_time = $origin.parent().find('.timer');
+      var origin_timer_value = app.parse_time(origin_time);
+      // Check we have enough time to shift.
+      if (origin_timer_value < time_shift_value) {
+        app.message('You don\'t have that much time to shift!');
+      }
     },
 
     message : function(text) {
@@ -329,9 +391,16 @@ $('document').ready(function() {
       // Remove the original timer.
       $original.remove();
       // Update the remaining timer.
+      app.update_timer($target, new_time);
+      app.message('Merge complete.');
+    },
+
+    update_timer: function($target, new_time, callback) {
       $updated_timer = $target.find('.timer');
       $updated_timer.runner({milliseconds : false, startAt : new_time});
-      app.message('Merge complete.');
+      if (typeof callback === 'function') {
+        callback();
+      }
     },
 
     stop_all_timers : function() {
