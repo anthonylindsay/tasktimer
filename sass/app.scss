@@ -73,7 +73,9 @@ body {
   .button {
     float: right;
   }
-  .delete.button, .merge.button {
+  .delete.button,
+  .edit.button,
+  .merge.button {
     border: 1px solid lightgray;
     border-radius: 0.25em;
     clear: right;
