@@ -62,6 +62,8 @@ $('document').ready(function() {
       $('#dialog-confirm').hide();
       $('#main-content').append(confirm_dialog_all_html.html);
       $('#dialog-confirm-all').hide();
+      $('#main-content').append(edit_dialog_html.html);
+      $('#dialog-edit').hide();
     },
 
     parse_time : function($timer_value) {
