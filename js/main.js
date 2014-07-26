@@ -364,7 +364,7 @@ $('document').ready(function() {
       $system_message.html(text);
       $system_message.hide();
       $system_message.slideDown('fast','linear', function() {
-        setTimeout("$('#messages').slideUp('fast','linear', function() {$('#messages').html('');})", 4000);
+        setTimeout("$('#messages').slideUp('fast','linear', function() {$('#messages').html('');app.autosave();})", 4000);
       });
     },
 
