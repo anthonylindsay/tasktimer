@@ -1,3 +1,5 @@
+var time_shift_value = 0;
+
 $('document').ready(function() {
   // Create some global variables.
   var $timer_containers_wrapper;
