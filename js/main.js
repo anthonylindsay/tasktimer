@@ -242,6 +242,9 @@ $('document').ready(function() {
         // Merge button has been pressed so do a merge.
         app.merge(elem);
       }
+      else if ($('.edit.button.pressed').length > 0) {
+        app.update_shifted_timers(elem);
+      }
       else {
         // Start the timer.
         $(elem).addClass('active')
