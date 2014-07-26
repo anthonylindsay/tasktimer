@@ -363,8 +363,8 @@ $('document').ready(function() {
       var $system_message = $('#messages');
       $system_message.html(text);
       $system_message.hide();
-      $system_message.slideDown('fast','linear', function(){
-        setTimeout("$('#messages').slideUp('fast','linear')", 4000);
+      $system_message.slideDown('fast','linear', function() {
+        setTimeout("$('#messages').slideUp('fast','linear', function() {$('#messages').html('');})", 4000);
       });
     },
 
