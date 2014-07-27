@@ -32,7 +32,6 @@ Roadmap
 
 - Disable timers (usecase: You've finished the task and want the display to reflect that, but don't want to delete it yet.)
 - more system messages
-- highlight title on addition of new timer
 - fix title highlight behaviour after initial click
 - title autocomplete
 - tabular view
