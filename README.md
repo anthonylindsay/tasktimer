@@ -19,6 +19,7 @@ How to use
 - A timer can be deleted at any point.
 - Timers can be merged together.
 - Total tracked time can be displayed/updated.
+- Shift time from one timer to another.
 
 
 Known Issues
@@ -38,4 +39,3 @@ Roadmap
 - timer description
 - labels
 - log
-- edit timers / shift time from one timer to another
