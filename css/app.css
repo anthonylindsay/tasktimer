@@ -62,7 +62,7 @@ body a {
   background-color: #8dc2e3;
   color: #333333;
 }
-/* line 57, ../sass/mixins.scss */
+/* line 57, ../sass/_mixins.scss */
 .button-form button:hover {
   background-color: #b6d8ed;
 }
@@ -93,7 +93,7 @@ body a {
   float: right;
   margin: 0.25em 0;
 }
-/* line 57, ../sass/mixins.scss */
+/* line 57, ../sass/_mixins.scss */
 .help-button:hover {
   background-color: #b6d8ed;
 }
@@ -261,7 +261,7 @@ body a {
   background-color: #8dc2e3;
   border-top: 1px solid #333333;
   bottom: 0;
-  position: absolute;
+  position: fixed;
   text-align: center;
   width: 100%;
 }
