@@ -1,8 +1,8 @@
-var add_container_button_html = {"html":"<form id='add-container-form' class='button-form'><button id='add-container-button' value='add' type='button' title='Add a new timer'>+ add</button></form>"}
+var add_container_button_html = {"html":"<form id='add-container-form' class='button-form'><button id='add-container-button' value='add' type='button' title='Add a new timer'>+ Add New Timer</button></form>"}
 
-var global_stop_button_html = {"html":"<form id='global-stop-form' class='button-form'><button id='global-stop-button' value='stop' type='button' title='Stop all timers.'>x stop</button></form>"}
+var global_stop_button_html = {"html":"<form id='global-stop-form' class='button-form'><button id='global-stop-button' value='Stop' type='button' title='Stop all timers.'>x Pause All Timers</button></form>"}
 
-var global_clear_button_html = {"html":"<form id='global-clear-form' class='button-form'><button id='global-clear-button' value='clear' type='button' title='Clear all timers and remove from memory.'>- clear</button></form>"}
+var global_clear_button_html = {"html":"<form id='global-clear-form' class='button-form'><button id='global-clear-button' value='clear' type='button' title='Clear all timers and remove from memory.'>- Remove All Timers</button></form>"}
 
 var container_html = {"html":"<li class='timer-container'><div class='delete button'>x</div><div class='merge button'>&#x29C9;</div><div class='title' contenteditable='true'></div><div class='timer'></div></li>"}
 
