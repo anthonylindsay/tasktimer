@@ -17,10 +17,9 @@ How to use
 - Simply click on a timer to activate it.
 - The stop button stops all timers.
 - A timer can be deleted at any point.
-- Timers can be merged together.
+- Timers can be merged together (click merge button, then choose target timer).
 - Total tracked time can be displayed/updated.
-- Shift time from one timer to another.
-
+- Time can be shifted from one timer to another. Click time shift button, set time value and click target timer.
 
 Known Issues
 --------------
@@ -33,8 +32,10 @@ Roadmap
 - Disable timers (usecase: You've finished the task and want the display to reflect that, but don't want to delete it yet.)
 - more system messages
 - fix title highlight behaviour after initial click
+- saved timer sets. Load up a set of saved timers at the start of the day.
 - title autocomplete
 - tabular view
 - timer description
 - labels
 - log
+- edit timers
