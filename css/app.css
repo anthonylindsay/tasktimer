@@ -273,16 +273,15 @@ body a {
   /* 9 */
   background-color: #8dc2e3;
   border-top: 1px solid #333333;
-  bottom: 0;
-  position: fixed;
+  clear: both;
   text-align: center;
   width: 100%;
 }
-/* line 138, ../sass/app.scss */
+/* line 137, ../sass/app.scss */
 #footer a {
   color: whitesmoke;
 }
-/* line 140, ../sass/app.scss */
+/* line 139, ../sass/app.scss */
 #footer a:focus, #footer a:hover {
   color: #333333;
   text-decoration: underline;
