@@ -62,7 +62,7 @@ body a {
   background-color: #8dc2e3;
   color: #333333;
 }
-/* line 57, ../sass/mixins.scss */
+/* line 57, ../sass/_mixins.scss */
 .button-form button:hover {
   background-color: #b6d8ed;
 }
@@ -93,7 +93,7 @@ body a {
   float: right;
   margin: 0.25em 0;
 }
-/* line 57, ../sass/mixins.scss */
+/* line 57, ../sass/_mixins.scss */
 .help-button:hover {
   background-color: #b6d8ed;
 }
@@ -273,16 +273,15 @@ body a {
   /* 9 */
   background-color: #8dc2e3;
   border-top: 1px solid #333333;
-  bottom: 0;
-  position: absolute;
+  clear: both;
   text-align: center;
   width: 100%;
 }
-/* line 138, ../sass/app.scss */
+/* line 137, ../sass/app.scss */
 #footer a {
   color: whitesmoke;
 }
-/* line 140, ../sass/app.scss */
+/* line 139, ../sass/app.scss */
 #footer a:focus, #footer a:hover {
   color: #333333;
   text-decoration: underline;

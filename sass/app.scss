@@ -131,8 +131,7 @@ body {
   @include rem(padding, 1rem 0);
   background-color: $blue;
   border-top: 1px solid $black;
-  bottom: 0;
-  position: absolute;
+  clear: both;
   text-align: center;
   width: 100%;
   a {
