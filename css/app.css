@@ -120,7 +120,8 @@ body a {
   margin-right: 2em;
 }
 /* line 62, ../sass/app.scss */
-.timer-container .title {
+.timer-container .title,
+.timer-container .description {
   /* 3 */
   /* 3 */
   /* 4 */
@@ -147,18 +148,19 @@ body a {
   background: whitesmoke;
   border: 1px solid lightgray;
 }
-/* line 69, ../sass/app.scss */
+/* line 70, ../sass/app.scss */
 .timer-container div {
   margin: 1em;
 }
-/* line 73, ../sass/app.scss */
+/* line 74, ../sass/app.scss */
 .timer-container .button {
   float: right;
 }
-/* line 76, ../sass/app.scss */
+/* line 77, ../sass/app.scss */
 .timer-container .delete.button,
 .timer-container .edit.button,
-.timer-container .merge.button {
+.timer-container .merge.button,
+.timer-container .expand.button {
   border: 1px solid lightgray;
   border-radius: 0.25em;
   clear: right;
@@ -169,34 +171,36 @@ body a {
   text-align: center;
   text-transform: lowercase;
 }
-/* line 88, ../sass/app.scss */
+/* line 90, ../sass/app.scss */
 .timer-container .delete.button.pressed,
 .timer-container .edit.button.pressed,
-.timer-container .merge.button.pressed {
+.timer-container .merge.button.pressed,
+.timer-container .expand.button.pressed {
   background: lightgray;
 }
 
-/* line 94, ../sass/app.scss */
+/* line 96, ../sass/app.scss */
 .active {
   background-color: gainsboro;
   border: 1px solid #ff5656;
 }
-/* line 97, ../sass/app.scss */
+/* line 99, ../sass/app.scss */
 .active .timer {
   background: url(../img/clock.gif) no-repeat right center;
 }
-/* line 100, ../sass/app.scss */
-.active .title {
+/* line 102, ../sass/app.scss */
+.active .title,
+.active .description {
   background: white;
   border: 1px solid #b3b3b3;
 }
 
-/* line 106, ../sass/app.scss */
+/* line 109, ../sass/app.scss */
 .dialog-confirm {
   height: auto;
 }
 
-/* line 110, ../sass/app.scss */
+/* line 113, ../sass/app.scss */
 #last-saved,
 #total-time {
   /* 3 */
@@ -234,20 +238,20 @@ body a {
   float: left;
 }
 
-/* line 118, ../sass/app.scss */
+/* line 121, ../sass/app.scss */
 #total-time {
   clear: right;
   float: right;
 }
 
-/* line 123, ../sass/app.scss */
+/* line 126, ../sass/app.scss */
 #messages {
   color: #000;
   padding: 0.25em;
   text-align: center;
 }
 
-/* line 129, ../sass/app.scss */
+/* line 132, ../sass/app.scss */
 #footer {
   /* 3 */
   /* 3 */
@@ -277,11 +281,11 @@ body a {
   text-align: center;
   width: 100%;
 }
-/* line 137, ../sass/app.scss */
+/* line 140, ../sass/app.scss */
 #footer a {
   color: whitesmoke;
 }
-/* line 139, ../sass/app.scss */
+/* line 142, ../sass/app.scss */
 #footer a:focus, #footer a:hover {
   color: #333333;
   text-decoration: underline;
