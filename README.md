@@ -35,7 +35,5 @@ Roadmap
 - saved timer sets. Load up a set of saved timers at the start of the day.
 - title autocomplete
 - tabular view
-- timer description
 - labels
 - log
-- edit timers
