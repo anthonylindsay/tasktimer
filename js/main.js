@@ -181,6 +181,8 @@ $('document').ready(function() {
       var $titles = $('.timer-container .title');
       var $containers = $('.timer-container');
       var $timers = $('.timer-container .timer');
+      var $descriptions = $('.timer-container .description');
+      var $editable_elements = $timers.add($descriptions);
       // Stop running timers
       $timers.each(function() {
         $(this).runner('stop');
@@ -189,7 +191,7 @@ $('document').ready(function() {
       app.set_default_title($titles.length, $titles);
       app.add_new_timer($timers.length, $timers);
       // Ensure the titles are editable.
-      $titles.each ( function() {
+      $editable_elements.each ( function() {
         $(this)[0].onmousedown = function(e) {
           this.focus();
           $(this).selectText();
