@@ -201,7 +201,7 @@ $('document').ready(function() {
             }
           });
         };
-        
+
         $(this).blur(function() {
           if (window.getSelection) {
             selection = window.getSelection();
@@ -217,7 +217,7 @@ $('document').ready(function() {
       var sel;
       if ( (sel = document.selection) && sel.empty ) {
         sel.empty();
-      } 
+      }
       else {
         if (window.getSelection) {
           window.getSelection().removeAllRanges();
@@ -282,6 +282,7 @@ $('document').ready(function() {
       $new_timer_container.click(function(e) {
         app.select_container($(this));
       });
+      $new_timer_container.find('.description').hide();
       // Make this containers delete and merge buttons work.
       $new_timer_container.find('.delete.button').click(function(e) {
         var $target_timer = $(this);
@@ -292,6 +293,14 @@ $('document').ready(function() {
         // Ensure that no other timers are 'pressed'.
         app.press_element(this);
         app.message('Choose a target timer to merge into.');
+      });
+      $new_timer_container.find('.expand.button').click(function(e) {
+        $this = $(this);
+        $this.toggleClass('expanded');
+        $this.toggleHtml('&#x25C0', '&#x25BC');
+        var $description = $this.parent().find('.description');
+        $description.toggle();
+
       });
       $new_timer_container.find('.edit.button').click(function(e) {
         e.stopImmediatePropagation();
@@ -495,6 +504,21 @@ jQuery.fn.selectText = function() {
   });
 };
 
+/**
+ * JQuery plugin to toggle HTML in an element.
+ */
+jQuery.fn.extend({
+  toggleHtml: function (a, b) {
+    var that = this;
+    if (that.hasClass('expanded')) {
+      that.html(b);
+    }
+    else {
+      that.html(a);
+    }
+    return this;
+  }
+});
 
 /**
  * Format a seconds string to a human readable time.
@@ -511,3 +535,7 @@ String.prototype.toHHMMSS = function () {
   var time    = hours+':'+minutes+':'+seconds;
   return time;
 }
+
+
+// down &#x25BC;
+// left &#x25C0;
