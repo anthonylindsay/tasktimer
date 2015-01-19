@@ -182,7 +182,7 @@ $('document').ready(function() {
       var $containers = $('.timer-container');
       var $timers = $('.timer-container .timer');
       var $descriptions = $('.timer-container .description');
-      var $editable_elements = $timers.add($descriptions);
+      var $editable_elements = $titles.add($descriptions);
       // Stop running timers
       $timers.each(function() {
         $(this).runner('stop');
