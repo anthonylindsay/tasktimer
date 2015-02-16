@@ -7,6 +7,11 @@ Task Timer is a tool for people who need to keep track of the time they spend on
 
 It is specifically designed with context switching in mind, so that it is easy to switch the timer from one task to another with a minimum of fuss.
 
+Use it here
+===========
+
+https://anthonylindsay.github.io/tasktimer
+
 How to use
 -------------
 
