@@ -10,6 +10,8 @@ $('document').ready(function() {
   });
   // All the actual mechanics.
   app = {
+    label_cache : [],
+    title_cache : [],
     // function_name : function() {},
     start : function() {
       $timer_containers_wrapper = $('#containers-wrapper');
@@ -34,6 +36,13 @@ $('document').ready(function() {
       $elements.click(function() {
         app.save_state();
       });
+    },
+
+    cache_title : function(item) {
+      if (app.title_cache.indexOf(item) == -1) {
+        app.title_cache.push(item);
+        localStorage.setItem('timer_title_cache', JSON.stringify(app.title_cache));
+      }
     },
 
     load_stored_data : function(key) {
@@ -479,6 +488,13 @@ $('document').ready(function() {
       var now = new Date();
       localStorage.setItem('interface_save_time', now);
       $('#last-saved').html('Saved: ' + now.toString());
+      // Update the label cache.
+      var $titles = $('.timer-container .title');
+      $titles.each(function() {
+        var $this = $(this);
+        var title_text = $this.text();
+        app.cache_title(title_text);
+      });
     },
   }
 
