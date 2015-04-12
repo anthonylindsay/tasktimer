@@ -93,6 +93,10 @@ body {
   }
 }
 
+#countdown {
+  text-indent: -99999px;
+}
+
 .active {
   background-color: darken($white, 10%);
   border: 1px solid $red;
