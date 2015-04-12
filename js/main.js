@@ -10,6 +10,8 @@ $('document').ready(function() {
   });
   // All the actual mechanics.
   app = {
+    settings : {},
+
     // function_name : function() {},
     start : function() {
       $timer_containers_wrapper = $('#containers-wrapper');
@@ -19,6 +21,7 @@ $('document').ready(function() {
         app.init_loaded_timers();
       }
       app.add_help_button();
+      app.add_settings_button();
       app.add_total_button();
       app.add_global_stop();
       app.add_clear_button();
@@ -26,6 +29,7 @@ $('document').ready(function() {
       app.init_confirm_dialog();
       app.change_page_title('Timer');
       app.autosave();
+      app.load_settings();
     },
 
     autosave : function() {
@@ -115,6 +119,7 @@ $('document').ready(function() {
       $('#main-content').prepend(help_html.button);
       $('#main-content').append(help_html.html);
       $('#help-text').hide();
+      $('#settings').hide();
       $('#help-button').click(function(e) {
         e.preventDefault();
         var dialog_width = window.innerWidth * 0.8;
@@ -169,6 +174,56 @@ $('document').ready(function() {
         var formatted_time = time_string.toHHMMSS();
         $('#total-time').html('Total timed: ' + formatted_time);
       });
+    },
+
+    add_settings_button : function() {
+      $('#main-content').prepend(settings_button_html.html);
+      var $settings_dialog = $( "#settings" ).dialog({
+        autoOpen: false,
+        height: 300,
+        width: 350,
+        modal: true,
+        title: 'Settings',
+        buttons: {
+          "Save": function() {
+            app.save_settings();
+            $settings_dialog.dialog( "close" );
+          },
+          Cancel: function() {
+            $settings_dialog.dialog( "close" );
+          }
+        },
+        close: function() {
+        }
+      });
+      var dialog_width = window.innerWidth * 0.8;
+      $settings_dialog.dialog({ width: dialog_width });
+      $('#settings-button').click(function(e) {
+        e.preventDefault();
+        $settings_dialog.dialog('open');
+      });
+    },
+
+    save_settings : function() {
+      var time_increment = $('#time-increment').val();
+      var sound = $('#sound').is(':checked');
+      var settings = {};
+      settings.time_increment = time_increment;
+      settings.sound = sound;
+      app.settings = settings;
+      localStorage.setItem('timer_settings', JSON.stringify(settings));
+    },
+
+    load_settings : function() {
+      var timer_settings = app.load_stored_data('timer_settings');
+      if (timer_settings) {
+        timer_settings = JSON.parse(timer_settings);
+        console.log(timer_settings, 'parsed settings');
+        app.settings = timer_settings;
+        console.log(app.settings, 'saved');
+        $('#time-increment').val(timer_settings.time_increment);
+        $('#sound').attr('checked', timer_settings.sound);
+      }
     },
 
     create_container : function(create) {
@@ -255,7 +310,9 @@ $('document').ready(function() {
         favicon.badge(1);
         var timer_title = elem.find('.title').text();
         app.change_page_title(timer_title);
-        app.watch_countdown(elem.find('.timer'));
+        if (app.settings.sound) {
+          app.watch_countdown(elem.find('.timer'));
+        }
       }
     },
 
@@ -264,7 +321,7 @@ $('document').ready(function() {
       var timer_info = $timer.runner('info');
       var time = timer_info.time;
       // 15 mins = 15 * 60 * 1000 millis.
-      var target_increment = 15 * 60 * 1000;
+      var target_increment = parseInt(app.settings.time_increment) * 60 * 1000;
       var watch_time = target_increment - (time % target_increment);
       app.create_countdown(watch_time, target_increment);
     },
