@@ -6,8 +6,8 @@
  */
 /* line 5, ../sass/app.scss */
 body {
-  background: whitesmoke;
-  color: #333333;
+  background: #f5f5f5;
+  color: #333;
   font-family: sans-serif;
 }
 /* line 9, ../sass/app.scss */
@@ -27,7 +27,7 @@ body a {
 }
 /* line 20, ../sass/app.scss */
 #masthead h1 {
-  color: #333333;
+  color: #333;
   margin-bottom: 0.25em;
   margin-top: 0.25em;
   padding-bottom: 0.5em;
@@ -58,9 +58,9 @@ body a {
   /* 9 */
   padding: 0.5rem 1rem;
   /* 9 */
-  border: 1px solid #333333;
-  background-color: #8dc2e3;
-  color: #333333;
+  border: 1px solid #333;
+  background-color: #8DC2E3;
+  color: #333;
 }
 /* line 57, ../sass/_mixins.scss */
 .button-form button:hover {
@@ -86,10 +86,10 @@ body a {
   /* 9 */
   padding: 0.5rem 1rem;
   /* 9 */
-  border: 1px solid #333333;
-  background-color: #8dc2e3;
-  color: #333333;
-  background: #ff5656;
+  border: 1px solid #333;
+  background-color: #8DC2E3;
+  color: #333;
+  background: #FF5656;
   float: right;
   margin: 0.25em 0;
 }
@@ -108,7 +108,7 @@ body a {
   background-color: white;
   border: 1px solid gray;
   border-radius: 0.25em;
-  box-shadow: 0px 8px 8px -7px #333333;
+  box-shadow: 0px 8px 8px -7px #333;
   float: left;
   list-style: none;
   border-radius: 0.25em;
@@ -145,7 +145,7 @@ body a {
   -moz-border-radius: 0.25rem;
   -webkit-border-radius: 0.25rem;
   border-radius: 0.25rem;
-  background: whitesmoke;
+  background: #f5f5f5;
   border: 1px solid lightgray;
 }
 /* line 70, ../sass/app.scss */
@@ -180,27 +180,32 @@ body a {
 }
 
 /* line 96, ../sass/app.scss */
+#countdown {
+  text-indent: -99999px;
+}
+
+/* line 100, ../sass/app.scss */
 .active {
   background-color: gainsboro;
-  border: 1px solid #ff5656;
+  border: 1px solid #FF5656;
 }
-/* line 99, ../sass/app.scss */
+/* line 103, ../sass/app.scss */
 .active .timer {
   background: url(../img/clock.gif) no-repeat right center;
 }
-/* line 102, ../sass/app.scss */
+/* line 106, ../sass/app.scss */
 .active .title,
 .active .description {
   background: white;
   border: 1px solid #b3b3b3;
 }
 
-/* line 109, ../sass/app.scss */
+/* line 113, ../sass/app.scss */
 .dialog-confirm {
   height: auto;
 }
 
-/* line 113, ../sass/app.scss */
+/* line 117, ../sass/app.scss */
 #last-saved,
 #total-time {
   /* 3 */
@@ -234,24 +239,24 @@ body a {
   margin: 1.3rem 0.5rem 0.5rem 0;
   /* 9 */
   clear: left;
-  color: #333333;
+  color: #333;
   float: left;
 }
 
-/* line 121, ../sass/app.scss */
+/* line 125, ../sass/app.scss */
 #total-time {
   clear: right;
   float: right;
 }
 
-/* line 126, ../sass/app.scss */
+/* line 130, ../sass/app.scss */
 #messages {
   color: #000;
   padding: 0.25em;
   text-align: center;
 }
 
-/* line 132, ../sass/app.scss */
+/* line 136, ../sass/app.scss */
 #footer {
   /* 3 */
   /* 3 */
@@ -275,18 +280,18 @@ body a {
   /* 9 */
   padding: 1rem 0;
   /* 9 */
-  background-color: #8dc2e3;
-  border-top: 1px solid #333333;
+  background-color: #8DC2E3;
+  border-top: 1px solid #333;
   clear: both;
   text-align: center;
   width: 100%;
 }
-/* line 140, ../sass/app.scss */
+/* line 144, ../sass/app.scss */
 #footer a {
-  color: whitesmoke;
+  color: #f5f5f5;
 }
-/* line 142, ../sass/app.scss */
+/* line 146, ../sass/app.scss */
 #footer a:focus, #footer a:hover {
-  color: #333333;
+  color: #333;
   text-decoration: underline;
 }
