@@ -251,10 +251,37 @@ $('document').ready(function() {
         // Start the timer.
         $(elem).addClass('active')
         elem.find('.timer').runner('start');
+        var timer_info = elem.find('.timer').runner('info');
         favicon.badge(1);
         var timer_title = elem.find('.title').text();
         app.change_page_title(timer_title);
+        app.watch_countdown(elem.find('.timer'));
       }
+    },
+
+    watch_countdown : function(timer) {
+      $timer = $(timer);
+      var timer_info = $timer.runner('info');
+      var time = timer_info.time;
+      // 15 mins = 15 * 60 * 1000 millis.
+      var target_increment = 15 * 60 * 1000;
+      var watch_time = target_increment - (time % target_increment);
+      app.create_countdown(watch_time, target_increment);
+    },
+
+    create_countdown : function(watch_time, target_increment) {
+      var $countdown = $('#countdown');
+      $countdown.runner({
+        autostart: true,
+        countdown: true,
+        startAt: watch_time,
+        stopAt: 0,
+        milliseconds: false,
+      }).on('runnerFinish', function(eventObject, info) {
+        new Audio('audio/bell.mp3').play()
+        $countdown.runner('stop');
+        app.create_countdown(target_increment);
+      });
     },
 
     set_default_title : function(count, $titles) {
@@ -420,6 +447,8 @@ $('document').ready(function() {
       $timers.each(function() {
         $(this).runner('stop');
       });
+      // Stop countdown;
+      $('#countdown').runner('stop');
       favicon.badge(0);
       app.change_page_title('Stopped');
     },
