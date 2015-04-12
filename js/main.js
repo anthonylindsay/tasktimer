@@ -10,7 +10,7 @@ $('document').ready(function() {
   });
   // All the actual mechanics.
   app = {
-    label_cache : [],
+    description_cache : [],
     title_cache : [],
     // function_name : function() {},
     start : function() {
@@ -20,6 +20,25 @@ $('document').ready(function() {
         $timer_containers_wrapper.html(stored_data);
         app.init_loaded_timers();
       }
+
+      // Set up lookup caches from storage.
+      var cached_descriptions = JSON.parse(app.load_stored_data('timer_description_cache'));
+
+      var cached_titles = JSON.parse(app.load_stored_data('timer_title_cache'));
+      if (cached_descriptions) {
+        for (var j = 0; j < cached_descriptions.length; j++) {
+          if (cached_descriptions[j])
+            app.description_cache[j] = cached_descriptions[j];
+        }
+      }
+      if (cached_titles) {
+        for (var j = 0; j < cached_titles.length; j++) {
+          if (cached_titles[j])
+            app.title_cache[j] = cached_titles[j];
+        }
+      }
+
+      // Create the UI.
       app.add_help_button();
       app.add_total_button();
       app.add_global_stop();
@@ -28,6 +47,23 @@ $('document').ready(function() {
       app.init_confirm_dialog();
       app.change_page_title('Timer');
       app.autosave();
+      app.autocomplete();
+    },
+
+    autocomplete : function() {
+      var description_ac_options;
+      var title_ac_options;
+      console.log('title lookup', app.title_cache  );
+      title_ac_options = {source: app.title_cache };
+/*
+      jQuery(function(){
+        description_ac_options = { lookup: app.description_cache};
+        title_ac_options = { lookup: app.title_cache };
+        $title_ac = $('.title').autocomplete(title_ac_options);
+        $description_ac = $('.description').autocomplete(description_ac_options);
+        $title_ac.enable();
+        $description_ac.enable();
+      });*/
     },
 
     autosave : function() {
@@ -39,10 +75,26 @@ $('document').ready(function() {
     },
 
     cache_title : function(item) {
-      if (app.title_cache.indexOf(item) == -1) {
+      if (item.length > 0 && app.title_cache.indexOf(item) == -1) {
         app.title_cache.push(item);
         localStorage.setItem('timer_title_cache', JSON.stringify(app.title_cache));
       }
+    },
+
+    cache_description : function(item) {
+      if (item.length > 0 && app.description_cache.indexOf(item) == -1) {
+        app.description_cache.push(item);
+        localStorage.setItem('timer_description_cache', JSON.stringify(app.description_cache));
+      }
+    },
+
+    clear_cache : function() {
+      this.title_cache = [];
+      this.description_cache = [];
+      // this.lookup_cache = {};
+      localStorage.setItem('timer_title_cache', null);
+      localStorage.setItem('timer_description_cache', null);
+      app.message('Caches cleared');
     },
 
     load_stored_data : function(key) {
@@ -488,13 +540,16 @@ $('document').ready(function() {
       var now = new Date();
       localStorage.setItem('interface_save_time', now);
       $('#last-saved').html('Saved: ' + now.toString());
-      // Update the label cache.
-      var $titles = $('.timer-container .title');
-      $titles.each(function() {
+      // Update the description cache.
+      var $timers = $('.timer-container');
+      $timers.each(function() {
         var $this = $(this);
-        var title_text = $this.text();
+        var description_text  = $this.find('.description').text();
+        var title_text = $this.find('.title').text();
         app.cache_title(title_text);
+        app.cache_description(description_text);
       });
+      var $descriptions = $('.timer-container .title');
     },
   }
 
