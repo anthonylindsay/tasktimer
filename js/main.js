@@ -335,7 +335,9 @@ $('document').ready(function() {
         stopAt: 0,
         milliseconds: false,
       }).on('runnerFinish', function(eventObject, info) {
-        new Audio('audio/bell.mp3').play()
+        $audio = $("#bell");
+        favicon.badge(1);
+        $audio.trigger('play');
         $countdown.runner('stop');
         app.create_countdown(target_increment);
       });
