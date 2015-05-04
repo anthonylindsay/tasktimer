@@ -54,16 +54,33 @@ $('document').ready(function() {
       var description_ac_options;
       var title_ac_options;
       console.log('title lookup', app.title_cache  );
-      title_ac_options = {source: app.title_cache };
-/*
-      jQuery(function(){
-        description_ac_options = { lookup: app.description_cache};
-        title_ac_options = { lookup: app.title_cache };
-        $title_ac = $('.title').autocomplete(title_ac_options);
-        $description_ac = $('.description').autocomplete(description_ac_options);
-        $title_ac.enable();
-        $description_ac.enable();
-      });*/
+      var title_ac_options = {lookup: app.title_cache };
+
+      var description_ac_options = {lookup: app.description_cache};
+      $title_ac = $('.title');
+      app.contenteditable_autocomplete($title_ac, title_ac_options);
+      $description_ac = $('.description');
+      app.contenteditable_autocomplete($description_ac, description_ac_options);
+    },
+
+    contenteditable_autocomplete : function($elem, $lookup) {
+      $elem.each(function() {
+        var $this = $(this);
+        var $source = $lookup.lookup;
+        $this.on('input', function( event ) {
+          // Grab the field value.
+          var $string = $this.text();
+          $output = [];
+          for (var i = 0; i < $source.length; i++) {
+            if ($source[i].indexOf($string) != -1) {
+              $output.push($source[i]);
+            }
+          }
+          console.log($output);
+          // Iterate over the lookup: for each item, check it for the string.
+          // Return all matches for display.
+        });
+      });
     },
 
     autosave : function() {
