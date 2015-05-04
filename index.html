@@ -21,7 +21,7 @@
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
-        <!--[if lt IE 7]>
+        <!--[if lt IE 8]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
     <div id="page">
@@ -35,6 +35,14 @@
           <ul id="containers-wrapper">
           </ul>
         </div>
+        <div id="countdown"></div>
+    </div>
+    <div id="settings">
+      <form>
+        Check for sound alerts (requires an active browser tab) <input type="checkbox" name="sound" value="1" id="sound"><br />
+        Alert time interval (minutes) <input type="text" name="time-increment" value="15" id="time-increment">
+      </form>
+
     </div>
     <div id="footer">Created by <a href="https://github.com/anthonylindsay/tasktimer">Anthony Lindsay</a>. (But it got a little love from <a href="https://github.com/markconroy/tasktimer">Mark Conroy</a>.)</div>
 
@@ -46,5 +54,8 @@
         <script src="js/elements.js"></script>
         <script src="js/vendor/jquery.runner-min.js"></script>
         <script src="js/vendor/favico-0.3.4.min.js"></script>
+        <audio id="bell" preload="auto" src="audio/bell.mp3">
+          <p>Your browser does not support the <code>audio</code> element.</p>
+        </audio>
     </body>
 </html>

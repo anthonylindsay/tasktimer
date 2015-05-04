@@ -7,6 +7,11 @@ Task Timer is a tool for people who need to keep track of the time they spend on
 
 It is specifically designed with context switching in mind, so that it is easy to switch the timer from one task to another with a minimum of fuss.
 
+Use it here
+===========
+
+https://anthonylindsay.github.io/tasktimer
+
 How to use
 -------------
 
@@ -20,11 +25,14 @@ How to use
 - Timers can be merged together (click merge button, then choose target timer).
 - Total tracked time can be displayed/updated.
 - Time can be shifted from one timer to another. Click time shift button, set time value and click target timer.
+- You can turn on a chime which will fire every time any timer passes an incremental threshold, e.g. 15 minutes. NB this works best in an active browser tab.
 
 Known Issues
 --------------
 
 This project is still enjoying ongoing development so the javascript does still need to be optimised and minified.
+
+In Chrome the chime will not work in an inactive tab.
 
 Roadmap
 ---------
@@ -37,3 +45,9 @@ Roadmap
 - tabular view
 - labels
 - log
+
+
+Attribution
+-----------
+
+Bell MP3 is from http://soundbible.com/1462-Two-Tone-Doorbell.html

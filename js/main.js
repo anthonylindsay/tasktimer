@@ -12,6 +12,8 @@ $('document').ready(function() {
   app = {
     description_cache : [],
     title_cache : [],
+    settings : {},
+
     // function_name : function() {},
     start : function() {
       $timer_containers_wrapper = $('#containers-wrapper');
@@ -40,6 +42,7 @@ $('document').ready(function() {
 
       // Create the UI.
       app.add_help_button();
+      app.add_settings_button();
       app.add_total_button();
       app.add_global_stop();
       app.add_clear_button();
@@ -47,6 +50,7 @@ $('document').ready(function() {
       app.init_confirm_dialog();
       app.change_page_title('Timer');
       app.autosave();
+      app.load_settings();
       app.autocomplete();
     },
 
@@ -71,14 +75,33 @@ $('document').ready(function() {
           // Grab the field value.
           var $string = $this.text();
           $output = [];
+          // Iterate over the lookup: for each item, check it for the string.
           for (var i = 0; i < $source.length; i++) {
-            if ($source[i].indexOf($string) != -1) {
+            // @todo make the string matching text insensitive.
+            if ($source[i].indexOfInsensitive($string) != -1) {
               $output.push($source[i]);
             }
           }
-          console.log($output);
-          // Iterate over the lookup: for each item, check it for the string.
           // Return all matches for display.
+          console.log($output);
+          // Create a container div.
+          $ac_element = $this.next('.ac-results');
+          if ($ac_element.length == 0) {
+            $ac_element_html = '<div class="ac-results"></div>';
+            $elem.after($ac_element_html)
+            $ac_element = $this.next('.ac-results');
+          }
+          // Fill the div with $output.
+          // Iterate over $output to create something we can use.
+          $suggestions = '<ul class="suggestions">';
+          for (var i = 0; i < $output.length; i++) {
+            console.log($output[i]);
+            // Mark it up so we can style it.
+            $suggestions += '<li class="suggestion">' + $output[i] + '</li>';
+          }
+          $suggestions += '</li>';
+          console.log($suggestions);
+          $ac_element.html($suggestions);
         });
       });
     },
@@ -193,6 +216,7 @@ $('document').ready(function() {
       $('#main-content').prepend(help_html.button);
       $('#main-content').append(help_html.html);
       $('#help-text').hide();
+      $('#settings').hide();
       $('#help-button').click(function(e) {
         e.preventDefault();
         var dialog_width = window.innerWidth * 0.8;
@@ -247,6 +271,56 @@ $('document').ready(function() {
         var formatted_time = time_string.toHHMMSS();
         $('#total-time').html('Total timed: ' + formatted_time);
       });
+    },
+
+    add_settings_button : function() {
+      $('#main-content').prepend(settings_button_html.html);
+      var $settings_dialog = $( "#settings" ).dialog({
+        autoOpen: false,
+        height: 300,
+        width: 350,
+        modal: true,
+        title: 'Settings',
+        buttons: {
+          "Save": function() {
+            app.save_settings();
+            $settings_dialog.dialog( "close" );
+          },
+          Cancel: function() {
+            $settings_dialog.dialog( "close" );
+          }
+        },
+        close: function() {
+        }
+      });
+      var dialog_width = window.innerWidth * 0.8;
+      $settings_dialog.dialog({ width: dialog_width });
+      $('#settings-button').click(function(e) {
+        e.preventDefault();
+        $settings_dialog.dialog('open');
+      });
+    },
+
+    save_settings : function() {
+      var time_increment = $('#time-increment').val();
+      var sound = $('#sound').is(':checked');
+      var settings = {};
+      settings.time_increment = time_increment;
+      settings.sound = sound;
+      app.settings = settings;
+      localStorage.setItem('timer_settings', JSON.stringify(settings));
+    },
+
+    load_settings : function() {
+      var timer_settings = app.load_stored_data('timer_settings');
+      if (timer_settings) {
+        timer_settings = JSON.parse(timer_settings);
+        console.log(timer_settings, 'parsed settings');
+        app.settings = timer_settings;
+        console.log(app.settings, 'saved');
+        $('#time-increment').val(timer_settings.time_increment);
+        $('#sound').attr('checked', timer_settings.sound);
+      }
     },
 
     create_container : function(create) {
@@ -329,10 +403,41 @@ $('document').ready(function() {
         // Start the timer.
         $(elem).addClass('active')
         elem.find('.timer').runner('start');
+        var timer_info = elem.find('.timer').runner('info');
         favicon.badge(1);
         var timer_title = elem.find('.title').text();
         app.change_page_title(timer_title);
+        if (app.settings.sound) {
+          app.watch_countdown(elem.find('.timer'));
+        }
       }
+    },
+
+    watch_countdown : function(timer) {
+      $timer = $(timer);
+      var timer_info = $timer.runner('info');
+      var time = timer_info.time;
+      // 15 mins = 15 * 60 * 1000 millis.
+      var target_increment = parseInt(app.settings.time_increment) * 60 * 1000;
+      var watch_time = target_increment - (time % target_increment);
+      app.create_countdown(watch_time, target_increment);
+    },
+
+    create_countdown : function(watch_time, target_increment) {
+      var $countdown = $('#countdown');
+      $countdown.runner({
+        autostart: true,
+        countdown: true,
+        startAt: watch_time,
+        stopAt: 0,
+        milliseconds: false,
+      }).on('runnerFinish', function(eventObject, info) {
+        $audio = $("#bell");
+        favicon.badge(1);
+        $audio.trigger('play');
+        $countdown.runner('stop');
+        app.create_countdown(target_increment);
+      });
     },
 
     set_default_title : function(count, $titles) {
@@ -498,6 +603,8 @@ $('document').ready(function() {
       $timers.each(function() {
         $(this).runner('stop');
       });
+      // Stop countdown;
+      $('#countdown').runner('stop');
       favicon.badge(0);
       app.change_page_title('Stopped');
     },
@@ -624,6 +731,13 @@ String.prototype.toHHMMSS = function () {
   if (seconds < 10) {seconds = "0"+seconds;}
   var time    = hours+':'+minutes+':'+seconds;
   return time;
+}
+
+/**
+ * Indexof is case sensitive, so let's make a new one.
+ */
+String.prototype.indexOfInsensitive = function (s, b) {
+    return this.toLowerCase().indexOf(s.toLowerCase(), b);
 }
 
 
