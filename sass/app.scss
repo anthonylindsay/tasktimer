@@ -114,6 +114,24 @@ body {
   height: auto;
 }
 
+.ac-results {
+  border: 1px solid #cecece;
+  width: 75%;
+  .suggestions {
+    padding: 0;
+    .suggestion {
+      padding: 5px;
+      list-style-type: none;
+      &:hover {
+        background: #f4f4f4;
+      }
+    }
+  }
+}
+.timer-container .ac-results {
+  margin-top: -1em;
+}
+
 #last-saved,
 #total-time {
   @include rem(font-size, 0.75rem);
