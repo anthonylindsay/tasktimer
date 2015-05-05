@@ -206,6 +206,30 @@ body a {
 }
 
 /* line 117, ../sass/app.scss */
+.ac-results {
+  border: 1px solid #cecece;
+  width: 75%;
+}
+/* line 120, ../sass/app.scss */
+.ac-results .suggestions {
+  padding: 0;
+}
+/* line 122, ../sass/app.scss */
+.ac-results .suggestions .suggestion {
+  padding: 5px;
+  list-style-type: none;
+}
+/* line 125, ../sass/app.scss */
+.ac-results .suggestions .suggestion:hover {
+  background: #f4f4f4;
+}
+
+/* line 131, ../sass/app.scss */
+.timer-container .ac-results {
+  margin-top: -1em;
+}
+
+/* line 135, ../sass/app.scss */
 #last-saved,
 #total-time {
   /* 3 */
@@ -243,20 +267,20 @@ body a {
   float: left;
 }
 
-/* line 125, ../sass/app.scss */
+/* line 143, ../sass/app.scss */
 #total-time {
   clear: right;
   float: right;
 }
 
-/* line 130, ../sass/app.scss */
+/* line 148, ../sass/app.scss */
 #messages {
   color: #000;
   padding: 0.25em;
   text-align: center;
 }
 
-/* line 136, ../sass/app.scss */
+/* line 154, ../sass/app.scss */
 #footer {
   /* 3 */
   /* 3 */
@@ -286,11 +310,11 @@ body a {
   text-align: center;
   width: 100%;
 }
-/* line 144, ../sass/app.scss */
+/* line 162, ../sass/app.scss */
 #footer a {
   color: #f5f5f5;
 }
-/* line 146, ../sass/app.scss */
+/* line 164, ../sass/app.scss */
 #footer a:focus, #footer a:hover {
   color: #333;
   text-decoration: underline;
