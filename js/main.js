@@ -57,7 +57,6 @@ $('document').ready(function() {
     autocomplete : function() {
       var description_ac_options;
       var title_ac_options;
-      console.log('title lookup', app.title_cache  );
       var title_ac_options = {lookup: app.title_cache };
 
       var description_ac_options = {lookup: app.description_cache};
@@ -83,9 +82,10 @@ $('document').ready(function() {
             }
           }
           // Return all matches for display.
-          console.log($output);
+
           // Create a container div.
-          $ac_element = $this.next('.ac-results');
+          var $target_input = $this;
+          var $ac_element = $this.next('.ac-results');
           if ($ac_element.length == 0) {
             $ac_element_html = '<div class="ac-results"></div>';
             $elem.after($ac_element_html)
@@ -93,15 +93,34 @@ $('document').ready(function() {
           }
           // Fill the div with $output.
           // Iterate over $output to create something we can use.
-          $suggestions = '<ul class="suggestions">';
+          var $suggestions = '<ul class="suggestions">';
           for (var i = 0; i < $output.length; i++) {
-            console.log($output[i]);
             // Mark it up so we can style it.
             $suggestions += '<li class="suggestion">' + $output[i] + '</li>';
           }
           $suggestions += '</li>';
-          console.log($suggestions);
-          $ac_element.html($suggestions);
+          if ($suggestions) {
+            $ac_element.html($suggestions);
+          }
+          // Find all suggestions.
+          var $suggestions = $('.suggestion');
+
+          // Make them clicky.
+          $suggestions.click(function(e) {
+            // Do the clicky swappy magic.
+            // Grab the value of this element.
+            var $my_suggestion = $(this).text();
+            // Insert it into the div.
+            $target_input.text($my_suggestion);
+            // Clean up the suggestions div.
+            $('.ac-results').remove();
+          });
+
+          // Eliminate suggestions when the input div loses focus.
+          $target_input.blur(function() {
+            $('.ac-results').remove();
+          });
+
         });
       });
     },
@@ -315,9 +334,7 @@ $('document').ready(function() {
       var timer_settings = app.load_stored_data('timer_settings');
       if (timer_settings) {
         timer_settings = JSON.parse(timer_settings);
-        console.log(timer_settings, 'parsed settings');
         app.settings = timer_settings;
-        console.log(app.settings, 'saved');
         $('#time-increment').val(timer_settings.time_increment);
         $('#sound').attr('checked', timer_settings.sound);
       }
@@ -365,6 +382,8 @@ $('document').ready(function() {
           }
         });
       });
+      // Make autocomplete work for the new element.
+      app.autocomplete();
     },
 
     clear_selection: function() {
