@@ -117,13 +117,16 @@ body {
 .ac-results {
   border: 1px solid #cecece;
   width: 75%;
+  max-height: 10em;
+  overflow: auto;
+  background: white;
   .suggestions {
     padding: 0;
     .suggestion {
       padding: 5px;
       list-style-type: none;
       &:hover {
-        background: #f4f4f4;
+        background: #f5f5f5;
       }
     }
   }
