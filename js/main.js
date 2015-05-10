@@ -324,6 +324,9 @@ $('document').ready(function() {
       var time_increment = $('#time-increment').val();
       var sound = $('#sound').is(':checked');
       var settings = {};
+      if ($('#clear-cache').is(':checked')) {
+        app.clear_cache();
+      }
       settings.time_increment = time_increment;
       settings.sound = sound;
       app.settings = settings;
