@@ -25,7 +25,7 @@ How to use
 - Timers can be merged together (click merge button, then choose target timer).
 - Total tracked time can be displayed/updated.
 - Time can be shifted from one timer to another. Click time shift button, set time value and click target timer.
-- Titles and description fields now have autocomplete. Autocomplete will make suggestions based upon your previous entries.
+- Titles and description fields now have autocomplete. Autocomplete will make suggestions based upon your previous entries. Click a suggestion to use it.
 - You can turn on a chime which will fire every time any timer passes an incremental threshold, e.g. 15 minutes. NB this works best in an active browser tab.
 
 Known Issues
