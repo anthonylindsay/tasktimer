@@ -411,8 +411,10 @@ $('document').ready(function() {
     },
 
     select_container : function(elem) {
-      app.stop_all_timers();
-      app.deactivate_all_containers();
+      if (!$(elem).hasClass('frozen')) {
+        app.stop_all_timers();
+        app.deactivate_all_containers();
+      }
       // Check for active merge function.
       if ($('.merge.button.pressed').length > 0) {
         // Merge button has been pressed so do a merge.
@@ -423,14 +425,16 @@ $('document').ready(function() {
       }
       else {
         // Start the timer.
-        $(elem).addClass('active')
-        elem.find('.timer').runner('start');
-        var timer_info = elem.find('.timer').runner('info');
-        favicon.badge(1);
-        var timer_title = elem.find('.title').text();
-        app.change_page_title(timer_title);
-        if (app.settings.sound) {
-          app.watch_countdown(elem.find('.timer'));
+        if (!$(elem).hasClass('frozen')) {
+          $(elem).addClass('active')
+          elem.find('.timer').runner('start');
+          var timer_info = elem.find('.timer').runner('info');
+          favicon.badge(1);
+          var timer_title = elem.find('.title').text();
+          app.change_page_title(timer_title);
+          if (app.settings.sound) {
+            app.watch_countdown(elem.find('.timer'));
+          }
         }
       }
     },
