@@ -525,11 +525,26 @@ $('document').ready(function() {
             }
           },
           close: function() {
-            // $('.pressed').removeClass('pressed');
+            // Do nothing.
           }
         });
         time_shift_dialog.dialog( "open" );
       });
+      // Freeze button.
+      $new_timer_container.find('.freeze.button').click(function(e) {
+        e.stopPropagation();
+        app.freeze_container(this);
+      });
+    },
+
+    freeze_container: function(elem) {
+      var $this = $(elem);
+      $this.toggleClass('pressed');
+      var $this_container = $this.parent();
+      $this_container.toggleClass('frozen');
+      $this_container.removeClass('active');
+      $this_container.find('.timer').runner('stop');
+      $('#countdown').runner('stop');
     },
 
     press_element: function(elem) {
