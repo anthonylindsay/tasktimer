@@ -41,7 +41,6 @@ Roadmap
 - more system messages
 - fix title highlight behaviour after initial click
 - saved timer sets. Load up a set of saved timers at the start of the day.
-- title autocomplete
 - tabular view
 - labels
 - log
