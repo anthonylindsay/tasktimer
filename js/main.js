@@ -156,6 +156,14 @@ $('document').ready(function() {
       app.message('Caches cleared');
     },
 
+    write_log: function(elem, event) {
+      var title = elem.find('.title').text();
+      var now = new Date();
+      var msg = now + ": " + event + " event logged for timer " + title;
+      localStorage.setItem('timer_log', JSON.stringify(msg));
+      console.log(msg);
+    },
+
     load_stored_data : function(key) {
       if ((typeof localStorage.getItem(key) != undefined) && (localStorage.getItem(key) != null) && (localStorage.getItem(key) != "null") && (localStorage.getItem(key) != "")) {
         return localStorage.getItem(key);
@@ -432,6 +440,7 @@ $('document').ready(function() {
         if (app.settings.sound) {
           app.watch_countdown(elem.find('.timer'));
         }
+        app.write_log(elem, 'start');
       }
     },
 
