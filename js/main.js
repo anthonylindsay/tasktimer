@@ -157,11 +157,13 @@ $('document').ready(function() {
     },
 
     write_log: function(elem, event) {
-      var title = elem.find('.title').text();
-      var now = new Date();
-      var msg = now + ": " + event + " event logged for timer " + title;
-      localStorage.setItem('timer_log', JSON.stringify(msg));
-      console.log(msg);
+      if ((typeof elem != 'undefined') && (typeof elem == 'object') && (elem != null)) {
+        var title = elem.find('.title').text();
+        var now = new Date();
+        var msg = now + ": " + event + " event logged for timer " + title;
+        localStorage.setItem('timer_log', JSON.stringify(msg));
+        console.log(msg);
+      }
     },
 
     load_stored_data : function(key) {
@@ -395,6 +397,10 @@ $('document').ready(function() {
       });
       // Make autocomplete work for the new element.
       app.autocomplete();
+      // Log the creation.
+      $containers = $('.timer-container');
+      app.write_log($containers[$containers.length] - 1, 'create');
+      console.log($containers[$containers.length] - 1);
     },
 
     clear_selection: function() {
