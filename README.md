@@ -51,3 +51,20 @@ Attribution
 -----------
 
 Bell MP3 is from http://soundbible.com/1462-Two-Tone-Doorbell.html
+
+
+log notes:
+
+log on
+ - reload
+ - create
+ - destroy
+ - stop
+ - start
+ - merge
+ - shift
+ - freeze
+ - edit title/description
+
+ log to localstorage
+ log time | action | title
