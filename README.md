@@ -26,6 +26,7 @@ How to use
 - Total tracked time can be displayed/updated.
 - Time can be shifted from one timer to another. Click time shift button, set time value and click target timer.
 - Freeze timers, e.g. that you're finished with but are not ready to delete, so that you cannot accidentally fire them up again.
+- Titles and description fields now have autocomplete. Autocomplete will make suggestions based upon your previous entries. Click a suggestion to use it.
 - You can turn on a chime which will fire every time any timer passes an incremental threshold, e.g. 15 minutes. NB this works best in an active browser tab.
 
 Known Issues
@@ -41,7 +42,6 @@ Roadmap
 - more system messages
 - fix title highlight behaviour after initial click
 - saved timer sets. Load up a set of saved timers at the start of the day.
-- title autocomplete
 - tabular view
 - labels
 - log
