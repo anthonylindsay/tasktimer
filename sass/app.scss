@@ -3,27 +3,40 @@
 @import "mixins";
 
 body {
-  background: $white;
+  background: $yellow;
   color: $black;
   font-family: sans-serif;
+  margin: -8px 0 0;
   a {
     text-decoration: none;
   }
 }
 
-#page {
+.contained {
   margin: auto;
   max-width: 90%;
 }
+
 #masthead {
-  background: url(../img/netrunnerLogo225_shadow.png)  bottom right no-repeat;
+  background: $pink;
+  border-bottom: 2px solid $black;
+  margin-bottom: 3rem;
+  padding: 1.5rem 0 1rem;
   h1 {
-    color: $black;
+    background: $yellow;
+    border-bottom: 2px solid $black;
+    color: $white;
     margin-bottom: 0.25em;
     margin-top: 0.25em;
-    padding-bottom: 0.5em;
+    padding: 0.5em;
+    text-align: center;
     text-shadow: .05em .05em .05em rgba(#000,.25), 0 0 0 hsl(0,100%,30%);
+    width: 300px;
   }
+}
+
+#main-content {
+  @extend .contained;
 }
 
 .button-form {
@@ -42,36 +55,34 @@ body {
   // padding: 0.25em 0.5em;
 }
 
-#containers-wrapper {
+ul#containers-wrapper {
   clear: both;
+  padding: 0;
 }
 
 .timer-container {
   background-color: white;
-  border: 1px solid gray;
-  border-radius: 0.25em;
-  box-shadow: 0px 8px 8px -7px $black;
-  float: left;
+  border: 2px solid $black;
+  box-shadow: 0px 13px 10px -13px $black;
   list-style: none;
-  border-radius: 0.25em;
+  margin: 0 0 2rem;
   .timer {
+    font-weight: bold;
     margin-right: 2em;
   }
-  margin: 1% 2% 1% 0;
-  width: calc(23% - 2px);
   .title,
   .description {
     @include rem(padding, 1rem);
-    @include rem(margin-right, 2rem);
-    @include border-radius-default;
+    @include rem(margin-right, 3rem);
     background: $white;
-    border: 1px solid lightgray;
+    border: 2px solid $black;
   }
   div {
     margin: 1em;
   }
 
   .button {
+    background: $yellow;
     float: right;
   }
   .delete.button,
@@ -79,12 +90,11 @@ body {
   .merge.button,
   .expand.button,
   .freeze.button {
-    border: 1px solid lightgray;
-    border-radius: 0.25em;
+    border: 1px solid $black;
     clear: right;
     float: right;
     width: 12px;
-    margin: 2px;
+    margin: 5px 13px 2px;
     padding: 0 4px;
     text-align: center;
     text-transform: lowercase;
@@ -99,15 +109,16 @@ body {
 }
 
 .active {
-  background-color: darken($white, 10%);
-  border: 1px solid $red;
+  background-color: $pink;
+  border: 2px solid $black;
   .timer {
-    background: url(../img/clock.gif) no-repeat right center ;
+    background: url(../img/clock.gif) no-repeat 98% center ;
+    color: $white;
   }
   .title,
   .description {
     background: white;
-    border: 1px solid lighten($black, 50%);
+    border: 2px solid $black;
   }
 }
 
@@ -162,13 +173,15 @@ body {
 #footer {
   @include rem(font-size, 0.75rem);
   @include rem(padding, 1rem 0);
-  background-color: $blue;
-  border-top: 1px solid $black;
+  background-color: $pink;
+  border-top: 2px solid $black;
   clear: both;
+  font-weight: bold;
   text-align: center;
   width: 100%;
   a {
     color: $white;
+    font-weight: normal;
     &:focus,
     &:hover {
       color: $black;

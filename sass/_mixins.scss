@@ -51,10 +51,12 @@
 @mixin button {
   @include border-radius-default;
   @include rem(padding, 0.5rem 1rem);
-  border: 1px solid $black;
-  background-color: $blue;
-  color: $black;
+  border: 2px solid $black;
+  background-color: $pink;
+  color: $white;
+  font-weight: bold;
+  text-transform: uppercase;
     &:hover {
-      background-color: lighten($blue, 10%);
+      background-color: lighten($pink, 10%);
     }
 }
