@@ -5,31 +5,60 @@
  * @file - simple file to house our mixins
  */
 /* line 5, ../sass/app.scss */
+html {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+/* line 10, ../sass/app.scss */
+*, *:before, *:after {
+  box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  -webkit-box-sizing: inherit;
+}
+
+/* line 16, ../sass/app.scss */
 body {
   background: #FCB447;
   color: #333;
   font-family: sans-serif;
   margin: -8px 0 0;
 }
-/* line 10, ../sass/app.scss */
+/* line 21, ../sass/app.scss */
 body a {
   text-decoration: none;
 }
 
-/* line 15, ../sass/app.scss */
+/* line 26, ../sass/app.scss */
 .contained, #main-content {
   margin: auto;
   max-width: 90%;
 }
 
-/* line 20, ../sass/app.scss */
+/* line 31, ../sass/app.scss */
+.controls {
+  padding-right: 1rem;
+  position: fixed;
+  text-align: center;
+  width: 20%;
+}
+
+/* line 38, ../sass/app.scss */
+.containers {
+  float: right;
+  margin-top: -1rem;
+  width: 75%;
+}
+
+/* line 44, ../sass/app.scss */
 #masthead {
   background: #EA1B75;
   border-bottom: 2px solid #333;
   margin-bottom: 3rem;
   padding: 1.5rem 0 1rem;
 }
-/* line 25, ../sass/app.scss */
+/* line 49, ../sass/app.scss */
 #masthead h1 {
   background: #FCB447;
   border-bottom: 2px solid #333;
@@ -42,16 +71,12 @@ body a {
   width: 300px;
 }
 
-/* line 42, ../sass/app.scss */
+/* line 66, ../sass/app.scss */
 .button-form {
-  float: left;
-  margin: 0.25em;
+  margin: 0 auto 1rem;
 }
-/* line 45, ../sass/app.scss */
+/* line 68, ../sass/app.scss */
 .button-form button {
-  -moz-border-radius: 0.25rem;
-  -webkit-border-radius: 0.25rem;
-  border-radius: 0.25rem;
   /* 3 */
   /* 3 */
   /* 4 */
@@ -69,19 +94,18 @@ body a {
   border: 2px solid #333;
   background-color: #EA1B75;
   color: #f5f5f5;
+  display: inline-block;
   font-weight: bold;
   text-transform: uppercase;
+  width: 100%;
 }
-/* line 59, ../sass/_mixins.scss */
+/* line 60, ../sass/_mixins.scss */
 .button-form button:hover {
   background-color: #ee4a91;
 }
 
-/* line 50, ../sass/app.scss */
+/* line 73, ../sass/app.scss */
 .help-button {
-  -moz-border-radius: 0.25rem;
-  -webkit-border-radius: 0.25rem;
-  border-radius: 0.25rem;
   /* 3 */
   /* 3 */
   /* 4 */
@@ -99,24 +123,23 @@ body a {
   border: 2px solid #333;
   background-color: #EA1B75;
   color: #f5f5f5;
+  display: inline-block;
   font-weight: bold;
   text-transform: uppercase;
-  background: #ff0000;
-  float: right;
-  margin: 0.25em 0;
+  width: 100%;
 }
-/* line 59, ../sass/_mixins.scss */
+/* line 60, ../sass/_mixins.scss */
 .help-button:hover {
   background-color: #ee4a91;
 }
 
-/* line 58, ../sass/app.scss */
+/* line 77, ../sass/app.scss */
 ul#containers-wrapper {
   clear: both;
   padding: 0;
 }
 
-/* line 63, ../sass/app.scss */
+/* line 82, ../sass/app.scss */
 .timer-container {
   background-color: white;
   border: 2px solid #333;
@@ -126,12 +149,12 @@ ul#containers-wrapper {
   overflow: hidden;
   padding: 10px 0 12px;
 }
-/* line 71, ../sass/app.scss */
+/* line 90, ../sass/app.scss */
 .timer-container .timer {
   font-weight: bold;
   margin-right: 2em;
 }
-/* line 75, ../sass/app.scss */
+/* line 94, ../sass/app.scss */
 .timer-container .title,
 .timer-container .description {
   /* 3 */
@@ -156,32 +179,32 @@ ul#containers-wrapper {
   /* 9 */
   background: #f5f5f5;
   border: 2px solid #333;
+  display: inline-block;
+  width: 96.5%;
 }
-/* line 82, ../sass/app.scss */
+/* line 103, ../sass/app.scss */
 .timer-container div {
   margin: 1em;
 }
-/* line 86, ../sass/app.scss */
+/* line 107, ../sass/app.scss */
 .timer-container .button {
   background: #FCB447;
   float: right;
 }
-/* line 90, ../sass/app.scss */
+/* line 111, ../sass/app.scss */
 .timer-container .delete.button,
 .timer-container .edit.button,
 .timer-container .merge.button,
 .timer-container .expand.button,
 .timer-container .freeze.button {
   border: 1px solid #333;
-  clear: right;
   float: right;
-  width: 12px;
   margin: 5px 13px 2px;
   padding: 0 4px;
   text-align: center;
   text-transform: lowercase;
 }
-/* line 103, ../sass/app.scss */
+/* line 122, ../sass/app.scss */
 .timer-container .delete.button.pressed,
 .timer-container .edit.button.pressed,
 .timer-container .merge.button.pressed,
@@ -190,39 +213,39 @@ ul#containers-wrapper {
   background: lightgray;
 }
 
-/* line 109, ../sass/app.scss */
+/* line 128, ../sass/app.scss */
 #countdown {
   text-indent: -99999px;
 }
 
-/* line 113, ../sass/app.scss */
+/* line 132, ../sass/app.scss */
 .active {
   background-color: #EA1B75;
   border: 2px solid #333;
 }
-/* line 116, ../sass/app.scss */
+/* line 135, ../sass/app.scss */
 .active .timer {
   background: url(../img/clock.gif) no-repeat 98% center;
   color: #f5f5f5;
 }
-/* line 120, ../sass/app.scss */
+/* line 139, ../sass/app.scss */
 .active .title,
 .active .description {
   background: white;
   border: 2px solid #333;
 }
 
-/* line 127, ../sass/app.scss */
+/* line 146, ../sass/app.scss */
 .frozen {
   color: lightgray;
 }
 
-/* line 131, ../sass/app.scss */
+/* line 150, ../sass/app.scss */
 .dialog-confirm {
   height: auto;
 }
 
-/* line 135, ../sass/app.scss */
+/* line 154, ../sass/app.scss */
 .ac-results {
   border: 1px solid #cecece;
   width: 75%;
@@ -230,26 +253,26 @@ ul#containers-wrapper {
   overflow: auto;
   background: white;
 }
-/* line 141, ../sass/app.scss */
+/* line 160, ../sass/app.scss */
 .ac-results .suggestions {
   padding: 0;
 }
-/* line 143, ../sass/app.scss */
+/* line 162, ../sass/app.scss */
 .ac-results .suggestions .suggestion {
   padding: 5px;
   list-style-type: none;
 }
-/* line 146, ../sass/app.scss */
+/* line 165, ../sass/app.scss */
 .ac-results .suggestions .suggestion:hover {
   background: #f5f5f5;
 }
 
-/* line 152, ../sass/app.scss */
+/* line 171, ../sass/app.scss */
 .timer-container .ac-results {
   margin-top: -1em;
 }
 
-/* line 156, ../sass/app.scss */
+/* line 175, ../sass/app.scss */
 #last-saved,
 #total-time {
   /* 3 */
@@ -287,20 +310,20 @@ ul#containers-wrapper {
   float: left;
 }
 
-/* line 164, ../sass/app.scss */
+/* line 183, ../sass/app.scss */
 #total-time {
   clear: right;
   float: right;
 }
 
-/* line 169, ../sass/app.scss */
+/* line 188, ../sass/app.scss */
 #messages {
   color: #000;
   padding: 0.25em;
   text-align: center;
 }
 
-/* line 175, ../sass/app.scss */
+/* line 194, ../sass/app.scss */
 #footer {
   /* 3 */
   /* 3 */
@@ -331,12 +354,12 @@ ul#containers-wrapper {
   text-align: center;
   width: 100%;
 }
-/* line 184, ../sass/app.scss */
+/* line 203, ../sass/app.scss */
 #footer a {
   color: #f5f5f5;
   font-weight: normal;
 }
-/* line 187, ../sass/app.scss */
+/* line 206, ../sass/app.scss */
 #footer a:focus, #footer a:hover {
   color: #333;
   text-decoration: underline;
