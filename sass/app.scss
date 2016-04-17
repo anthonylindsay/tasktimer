@@ -14,7 +14,7 @@ html {
 }
 
 body {
-  background: $yellow;
+  background: $blue-50;
   color: $black;
   font-family: sans-serif;
   margin: -8px 0 0;
@@ -42,13 +42,13 @@ body {
 }
 
 #masthead {
-  background: $pink;
-  border-bottom: 2px solid $black;
+  background: $blue-300;
+  @include shadow;
   margin-bottom: 3rem;
   padding: 1.5rem 0 1rem;
   h1 {
-    background: $yellow;
-    border-bottom: 2px solid $black;
+    background: #1976D2;
+    @include shadow;
     color: $white;
     margin-bottom: 0.25em;
     margin-top: 0.25em;
@@ -61,17 +61,23 @@ body {
 
 #main-content {
   @extend .contained;
+  min-height: 400px;
 }
 
 .button-form {
   margin: 0 auto 1rem;
   button {
     @include button;
+    border: 0;
+    padding: 0.5rem 1rem;
+    line-height: 1.4em;
+    font-size: 0.8em;
   }
 }
 
 .help-button {
   @include button;
+  font-size: 0.8em;
 }
 
 ul#containers-wrapper {
@@ -81,7 +87,6 @@ ul#containers-wrapper {
 
 .timer-container {
   background-color: white;
-  border: 2px solid $black;
   box-shadow: 0px 13px 10px -13px $black;
   list-style: none;
   margin: 0 0 2rem;
@@ -90,22 +95,34 @@ ul#containers-wrapper {
   .timer {
     font-weight: bold;
     margin-right: 2em;
+    float: right;
+    clear: right;
+  }
+  .button-wrapper {
+    width: 29%;
+    float: right;
+    margin: 0;
+  }
+  .content-wrapper {
+    width: 68%;
+    float: left;
+    margin: 0;
   }
   .title,
   .description {
     @include rem(padding, 1rem);
-    @include rem(margin-right, 3rem);
     background: $white;
-    border: 2px solid $black;
+    border-bottom: 2px solid $blue-500;
     display: inline-block;
-    width: 96.5%;
+    width: 100%;
+    float: left;
   }
   div {
     margin: 1em;
   }
 
   .button {
-    background: $yellow;
+    background: $blue-500;
     float: right;
   }
   .delete.button,
@@ -113,12 +130,19 @@ ul#containers-wrapper {
   .merge.button,
   .expand.button,
   .freeze.button {
-    border: 1px solid $black;
+    color: $white;
+    @include shadow;
+    height: 24px;
+    width: 24px;
+    line-height: 24px;
     float: right;
-    margin: 5px 13px 2px;
+    margin: 5px 10px 2px;
     padding: 0 4px;
     text-align: center;
     text-transform: lowercase;
+    &:hover {
+      background-color: lighten($pink-500, 10%);
+    }
     &.pressed {
       background: lightgray;
     }
@@ -130,16 +154,23 @@ ul#containers-wrapper {
 }
 
 .active {
-  background-color: $pink;
-  border: 2px solid $black;
+  background-color: $blue-300;
   .timer {
-    background: url(../img/clock.gif) no-repeat 98% center ;
+    &:after {
+      background: url(../img/clock.gif) no-repeat 98% center ;
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin-left: 1em;
+    }
     color: $white;
   }
   .title,
   .description {
     background: white;
-    border: 2px solid $black;
+    -webkit-box-shadow:inset 1px 1px 1px 0 rgba(0,0,0,0.4);
+    box-shadow:inset 1px 2px 1px 0 rgba(0,0,0,0.4);
   }
 }
 
@@ -194,8 +225,7 @@ ul#containers-wrapper {
 #footer {
   @include rem(font-size, 0.75rem);
   @include rem(padding, 1rem 0);
-  background-color: $pink;
-  border-top: 2px solid $black;
+  background-color: $blue-300;
   clear: both;
   font-weight: bold;
   text-align: center;
