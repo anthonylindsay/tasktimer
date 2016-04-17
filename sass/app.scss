@@ -35,6 +35,21 @@ body {
   width: 20%;
 }
 
+@media screen and (max-width: 750px) {
+  .controls {
+    padding: 0;
+    margin: 0;
+    width: auto;
+    clear: both;
+  }
+  .button-form,
+  .help-button {
+    float: left;
+    width: auto;
+    margin: 1px;
+  }
+}
+
 .containers {
   float: right;
   margin-top: -1rem;
