@@ -50,12 +50,12 @@
 // Default button mixin we can use for all buttons across the app
 @mixin button {
   @include rem(padding, 0.5rem 1rem);
-  border: 2px solid $black;
-  background-color: $pink;
-  color: $white;
+  background-color: $orange-300;
+  color: $black;
   display: inline-block;
   font-weight: bold;
   text-transform: uppercase;
+  @include shadow;
   width: 100%;
     &:hover {
       background-color: lighten($pink, 10%);
