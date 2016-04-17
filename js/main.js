@@ -509,7 +509,7 @@ $('document').ready(function() {
         $this = $(this);
         $this.toggleClass('expanded');
         $this.toggleHtml('&#x25C0', '&#x25BC');
-        var $description = $this.parent().find('.description');
+        var $description = $this.parent().parent().find('.description');
         $description.toggle();
 
       });
@@ -544,7 +544,7 @@ $('document').ready(function() {
     freeze_container: function(elem) {
       var $this = $(elem);
       $this.toggleClass('pressed');
-      var $this_container = $this.parent();
+      var $this_container = $this.parent().parent();
       $this_container.toggleClass('frozen');
       $this_container.removeClass('active');
       $this_container.find('.timer').runner('stop');
@@ -561,7 +561,7 @@ $('document').ready(function() {
       $target = $(elem);
       var $target_timer = $target.find('.timer');
       var target_timer_value = app.parse_time($target_timer);
-      var $origin = $('.button.edit.pressed').parent();
+      var $origin = $('.button.edit.pressed').parent().parent();
       var origin_time = $origin.find('.timer');
       var origin_timer_value = app.parse_time(origin_time);
       app.message('Choose a timer to shift to.');
@@ -586,7 +586,7 @@ $('document').ready(function() {
 
       // Origin.
       var $origin = $('.pressed');
-      var origin_time = $origin.parent().find('.timer');
+      var origin_time = $origin.parent().parent().find('.timer');
       var origin_timer_value = app.parse_time(origin_time);
       // Check we have enough time to shift.
       if (origin_timer_value < time_shift_value) {
@@ -607,7 +607,7 @@ $('document').ready(function() {
       // Target element is passed in.
       var $target = $elem;
       // Find the original element
-      var $original = $('.timer-container .pressed').parent();
+      var $original = $('.timer-container .pressed').parent().parent();
       $original.find('.pressed').removeClass('pressed');
       // Make sure you're not merging the same timer.
       if ($original[0] == $target[0]) {
@@ -664,7 +664,7 @@ $('document').ready(function() {
         modal: true,
         buttons: {
           "Confirm delete": function() {
-            $target_timer.parent().remove();
+            $target_timer.parent().parent().remove();
             favicon.badge(0);
             $( this ).dialog( "close" );
           },
