@@ -6,7 +6,7 @@ var global_clear_button_html = {"html":"<form id='global-clear-form' class='butt
 
 var settings_button_html = {"html":"<form id='settings-button-form' class='button-form'><button id='settings-button' value='settings' type='button' title='Settings.'>Settings</button></form>"}
 
-var container_html = {"html":"<li class='timer-container'><div class='delete button'>x</div><div class='merge button'>&#x29C9;</div><div class='edit button'>&plusmn;</div><div class='expand button'>&#x25C0;</div><div class='freeze button'>-</div><div class='title' contenteditable='true'></div><div class='description' contenteditable='true'></div><div class='timer'></div></li>"}
+var container_html = {"html":"<li class='timer-container'><div class='button-wrapper'><div class='delete button'>x</div><div class='merge button'>&#x29C9;</div><div class='edit button'>&plusmn;</div><div class='expand button'>&#x25C0;</div><div class='freeze button'>-</div></div><div class='content-wrapper'><div class='title' contenteditable='true'></div><div class='description' contenteditable='true'></div></div><div class='timer'></div></li>"}
 
 var confirm_dialog_html = {"html":"<div id='dialog-confirm' class='dialog-confirm' title='Delete this timer?'> <span class='ui-icon ui-icon-alert' style='float:left; margin:0 7px 20px 0;'></span>Are you sure?</div>"}
 
