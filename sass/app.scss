@@ -1,6 +1,7 @@
 @import "compass/css3";
 @import "variables";
 @import "mixins";
+@import url(https://fonts.googleapis.com/css?family=Molle:400italic);
 
 html {
   box-sizing: border-box;
@@ -44,18 +45,19 @@ body {
 #masthead {
   background: $blue-300;
   @include shadow;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   padding: 1.5rem 0 1rem;
   h1 {
+    font-family: Molle, Courier;
     background: #1976D2;
     @include shadow;
     color: $white;
-    margin-bottom: 0.25em;
-    margin-top: 0.25em;
-    padding: 0.5em;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 0.1em;
     text-align: center;
     text-shadow: .05em .05em .05em rgba(#000,.25), 0 0 0 hsl(0,100%,30%);
-    width: 300px;
+    font-size: 2.5em;
   }
 }
 
@@ -89,11 +91,11 @@ ul#containers-wrapper {
   background-color: white;
   box-shadow: 0px 13px 10px -13px $black;
   list-style: none;
-  margin: 0 0 2rem;
+  margin: 0 0 1rem;
   overflow: hidden;
-  padding: 10px 0 12px;
   .timer {
     font-weight: bold;
+    margin: 0.5em;
     margin-right: 2em;
     float: right;
     clear: right;
@@ -110,7 +112,7 @@ ul#containers-wrapper {
   }
   .title,
   .description {
-    @include rem(padding, 1rem);
+    @include rem(padding, 0.5rem);
     background: $white;
     border-bottom: 2px solid $blue-500;
     display: inline-block;
