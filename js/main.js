@@ -476,7 +476,7 @@ $('document').ready(function() {
         if (event.which == 13) {
           event.preventDefault();
           app.clear_selection();
-          app.select_container($(this).parent());
+          app.select_container($(this).parent().parent());
         }
       });
     },
