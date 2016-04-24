@@ -49,12 +49,21 @@
 
 // Default button mixin we can use for all buttons across the app
 @mixin button {
-  @include border-radius-default;
   @include rem(padding, 0.5rem 1rem);
-  border: 1px solid $black;
-  background-color: $blue;
+  background-color: $orange-300;
   color: $black;
+  display: inline-block;
+  font-weight: bold;
+  text-transform: uppercase;
+  @include shadow;
+  width: 100%;
     &:hover {
-      background-color: lighten($blue, 10%);
+      background-color: lighten($pink, 10%);
     }
+}
+
+// A subtle shadow.
+@mixin shadow {
+  -webkit-box-shadow: 0 2px 1px 0 rgba(0,0,0,0.4);
+  box-shadow: 0 2px 1px 0 rgba(0,0,0,0.4);
 }

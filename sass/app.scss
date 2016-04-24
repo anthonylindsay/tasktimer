@@ -1,92 +1,158 @@
 @import "compass/css3";
 @import "variables";
 @import "mixins";
+@import url(https://fonts.googleapis.com/css?family=Molle:400italic);
+
+html {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  -webkit-box-sizing: inherit;
+}
 
 body {
-  background: $white;
+  background: $blue-50;
   color: $black;
   font-family: sans-serif;
+  margin: -8px 0 0;
   a {
     text-decoration: none;
   }
 }
 
-#page {
+.contained {
   margin: auto;
   max-width: 90%;
 }
+
+.controls {
+  padding-right: 1rem;
+  position: fixed;
+  text-align: center;
+  width: 20%;
+  top: 100px;
+}
+
+.containers {
+  float: right;
+  margin-top: -1rem;
+  width: 75%;
+}
+
 #masthead {
-  background: url(../img/netrunnerLogo225_shadow.png)  bottom right no-repeat;
+  width: 90%;
+  margin: auto;
+  background: none;
+  margin-bottom: 1rem;
+  padding: 1.5rem 0 1rem;
+  div.contained {
+    padding-right: 1rem;
+    position: fixed;
+    text-align: center;
+    width: 20%;
+  }
   h1 {
-    color: $black;
-    margin-bottom: 0.25em;
-    margin-top: 0.25em;
-    padding-bottom: 0.5em;
+    font-family: Molle, Courier;
+    background: $blue-500;
+    @include shadow;
+    color: $white;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 0.1em;
+    text-align: center;
     text-shadow: .05em .05em .05em rgba(#000,.25), 0 0 0 hsl(0,100%,30%);
+    font-size: 2.5em;
   }
 }
 
+#main-content {
+  @extend .contained;
+  min-height: 500px;
+}
+
 .button-form {
-  float: left;
-  margin: 0.25em;
+  margin: 0 auto 1rem;
   button {
     @include button;
+    border: 0;
+    padding: 0.5rem 1rem;
+    line-height: 1.4em;
+    font-size: 0.8em;
   }
 }
 
 .help-button {
   @include button;
-  background: $red;
-  float: right;
-  margin: 0.25em 0;
-  // padding: 0.25em 0.5em;
+  font-size: 0.8em;
 }
 
-#containers-wrapper {
+ul#containers-wrapper {
   clear: both;
+  padding: 0;
 }
 
 .timer-container {
   background-color: white;
-  border: 1px solid gray;
-  border-radius: 0.25em;
-  box-shadow: 0px 8px 8px -7px $black;
-  float: left;
+  box-shadow: 0px 13px 10px -13px $black;
   list-style: none;
-  border-radius: 0.25em;
+  margin: 0 0 1rem;
+  overflow: hidden;
   .timer {
+    font-weight: bold;
+    margin: 0.5em;
     margin-right: 2em;
+    float: right;
+    clear: right;
   }
-  margin: 1% 2% 1% 0;
-  width: calc(23% - 2px);
+  .button-wrapper {
+    width: 29%;
+    float: right;
+    margin: 0;
+  }
+  .content-wrapper {
+    width: 68%;
+    float: left;
+    margin: 0;
+  }
   .title,
   .description {
-    @include rem(padding, 1rem);
-    @include rem(margin-right, 2rem);
-    @include border-radius-default;
+    @include rem(padding, 0.5rem);
     background: $white;
-    border: 1px solid lightgray;
+    border-bottom: 2px solid $blue-500;
+    display: inline-block;
+    width: 100%;
+    float: left;
   }
   div {
     margin: 1em;
   }
 
   .button {
+    background: $blue-500;
     float: right;
   }
   .delete.button,
   .edit.button,
   .merge.button,
-  .expand.button {
-    border: 1px solid lightgray;
-    border-radius: 0.25em;
-    clear: right;
+  .expand.button,
+  .freeze.button {
+    color: $white;
+    @include shadow;
+    height: 24px;
+    width: 24px;
+    line-height: 24px;
     float: right;
-    width: 12px;
-    margin: 2px;
+    margin: 5px 10px 2px;
     padding: 0 4px;
     text-align: center;
     text-transform: lowercase;
+    &:hover {
+      background-color: lighten($pink-500, 10%);
+    }
     &.pressed {
       background: lightgray;
     }
@@ -98,16 +164,28 @@ body {
 }
 
 .active {
-  background-color: darken($white, 10%);
-  border: 1px solid $red;
+  background-color: $blue-300;
   .timer {
-    background: url(../img/clock.gif) no-repeat right center ;
+    &:after {
+      background: url(../img/clock.gif) no-repeat 98% center ;
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin-left: 1em;
+    }
+    color: $white;
   }
   .title,
   .description {
     background: white;
-    border: 1px solid lighten($black, 50%);
+    -webkit-box-shadow:inset 1px 1px 1px 0 rgba(0,0,0,0.4);
+    box-shadow:inset 1px 2px 1px 0 rgba(0,0,0,0.4);
   }
+}
+
+.frozen {
+  color: lightgray;
 }
 
 .dialog-confirm {
@@ -157,17 +235,62 @@ body {
 #footer {
   @include rem(font-size, 0.75rem);
   @include rem(padding, 1rem 0);
-  background-color: $blue;
-  border-top: 1px solid $black;
+  background-color: $blue-300;
   clear: both;
+  font-weight: bold;
   text-align: center;
   width: 100%;
   a {
     color: $white;
+    font-weight: normal;
     &:focus,
     &:hover {
       color: $black;
       text-decoration: underline;
     }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .controls {
+    position:relative;
+    padding: 0;
+    margin: 0;
+    clear: both;
+    width: 100%;
+    top: auto;
+  }
+  .button-form,
+  .help-button {
+    float: left;
+    width: 32%;
+    margin: 0.5%;
+  }
+  .containers {
+    width: 100%;
+    float: none;
+  }
+  #masthead h1 {
+    font-size: 1.5em;
+  }
+  #masthead > div.contained {
+    position: relative;
+    width: auto;
+    padding: 0;
+    h1 {
+      font-size: 2.5em;
+    }
+  }
+  #masthead {
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 751px) and (max-width: 1200px) {
+  #masthead h1 {
+    font-size: 1.5em;
+  }
+  .controls {
+    top: 70px
   }
 }
