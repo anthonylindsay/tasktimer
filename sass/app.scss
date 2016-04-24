@@ -34,6 +34,7 @@ body {
   position: fixed;
   text-align: center;
   width: 20%;
+  top: 100px;
 }
 
 .containers {
@@ -43,13 +44,20 @@ body {
 }
 
 #masthead {
-  background: $blue-300;
-  @include shadow;
+  width: 90%;
+  margin: auto;
+  background: none;
   margin-bottom: 1rem;
   padding: 1.5rem 0 1rem;
+  div.contained {
+    padding-right: 1rem;
+    position: fixed;
+    text-align: center;
+    width: 20%;
+  }
   h1 {
     font-family: Molle, Courier;
-    background: #1976D2;
+    background: $blue-500;
     @include shadow;
     color: $white;
     margin-bottom: 0;
@@ -63,7 +71,7 @@ body {
 
 #main-content {
   @extend .contained;
-  min-height: 400px;
+  min-height: 500px;
 }
 
 .button-form {
@@ -250,6 +258,7 @@ ul#containers-wrapper {
     margin: 0;
     clear: both;
     width: 100%;
+    top: auto;
   }
   .button-form,
   .help-button {
@@ -260,5 +269,28 @@ ul#containers-wrapper {
   .containers {
     width: 100%;
     float: none;
+  }
+  #masthead h1 {
+    font-size: 1.5em;
+  }
+  #masthead > div.contained {
+    position: relative;
+    width: auto;
+    padding: 0;
+    h1 {
+      font-size: 2.5em;
+    }
+  }
+  #masthead {
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 751px) and (max-width: 1200px) {
+  #masthead h1 {
+    font-size: 1.5em;
+  }
+  .controls {
+    top: 70px
   }
 }
