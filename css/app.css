@@ -44,27 +44,35 @@ body a {
   position: fixed;
   text-align: center;
   width: 20%;
+  top: 100px;
 }
 
-/* line 39, ../sass/app.scss */
+/* line 40, ../sass/app.scss */
 .containers {
   float: right;
   margin-top: -1rem;
   width: 75%;
 }
 
-/* line 45, ../sass/app.scss */
+/* line 46, ../sass/app.scss */
 #masthead {
-  background: #64B5F5;
-  -webkit-box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.4);
-  box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.4);
+  width: 90%;
+  margin: auto;
+  background: none;
   margin-bottom: 1rem;
   padding: 1.5rem 0 1rem;
 }
-/* line 50, ../sass/app.scss */
+/* line 52, ../sass/app.scss */
+#masthead div.contained, #masthead div#main-content {
+  padding-right: 1rem;
+  position: fixed;
+  text-align: center;
+  width: 20%;
+}
+/* line 58, ../sass/app.scss */
 #masthead h1 {
   font-family: Molle, Courier;
-  background: #1976D2;
+  background: #2196F3;
   -webkit-box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.4);
   box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.4);
   color: #f5f5f5;
@@ -76,16 +84,16 @@ body a {
   font-size: 2.5em;
 }
 
-/* line 64, ../sass/app.scss */
+/* line 72, ../sass/app.scss */
 #main-content {
-  min-height: 400px;
+  min-height: 500px;
 }
 
-/* line 69, ../sass/app.scss */
+/* line 77, ../sass/app.scss */
 .button-form {
   margin: 0 auto 1rem;
 }
-/* line 71, ../sass/app.scss */
+/* line 79, ../sass/app.scss */
 .button-form button {
   /* 3 */
   /* 3 */
@@ -119,7 +127,7 @@ body a {
   background-color: #ee4a91;
 }
 
-/* line 80, ../sass/app.scss */
+/* line 88, ../sass/app.scss */
 .help-button {
   /* 3 */
   /* 3 */
@@ -150,13 +158,13 @@ body a {
   background-color: #ee4a91;
 }
 
-/* line 85, ../sass/app.scss */
+/* line 93, ../sass/app.scss */
 ul#containers-wrapper {
   clear: both;
   padding: 0;
 }
 
-/* line 90, ../sass/app.scss */
+/* line 98, ../sass/app.scss */
 .timer-container {
   background-color: white;
   box-shadow: 0px 13px 10px -13px #333;
@@ -164,7 +172,7 @@ ul#containers-wrapper {
   margin: 0 0 1rem;
   overflow: hidden;
 }
-/* line 96, ../sass/app.scss */
+/* line 104, ../sass/app.scss */
 .timer-container .timer {
   font-weight: bold;
   margin: 0.5em;
@@ -172,19 +180,19 @@ ul#containers-wrapper {
   float: right;
   clear: right;
 }
-/* line 103, ../sass/app.scss */
+/* line 111, ../sass/app.scss */
 .timer-container .button-wrapper {
   width: 29%;
   float: right;
   margin: 0;
 }
-/* line 108, ../sass/app.scss */
+/* line 116, ../sass/app.scss */
 .timer-container .content-wrapper {
   width: 68%;
   float: left;
   margin: 0;
 }
-/* line 113, ../sass/app.scss */
+/* line 121, ../sass/app.scss */
 .timer-container .title,
 .timer-container .description {
   /* 3 */
@@ -203,16 +211,16 @@ ul#containers-wrapper {
   width: 100%;
   float: left;
 }
-/* line 122, ../sass/app.scss */
+/* line 130, ../sass/app.scss */
 .timer-container div {
   margin: 1em;
 }
-/* line 126, ../sass/app.scss */
+/* line 134, ../sass/app.scss */
 .timer-container .button {
   background: #2196F3;
   float: right;
 }
-/* line 130, ../sass/app.scss */
+/* line 138, ../sass/app.scss */
 .timer-container .delete.button,
 .timer-container .edit.button,
 .timer-container .merge.button,
@@ -230,7 +238,7 @@ ul#containers-wrapper {
   text-align: center;
   text-transform: lowercase;
 }
-/* line 145, ../sass/app.scss */
+/* line 153, ../sass/app.scss */
 .timer-container .delete.button:hover,
 .timer-container .edit.button:hover,
 .timer-container .merge.button:hover,
@@ -238,7 +246,7 @@ ul#containers-wrapper {
 .timer-container .freeze.button:hover {
   background-color: #ee4c83;
 }
-/* line 148, ../sass/app.scss */
+/* line 156, ../sass/app.scss */
 .timer-container .delete.button.pressed,
 .timer-container .edit.button.pressed,
 .timer-container .merge.button.pressed,
@@ -247,20 +255,20 @@ ul#containers-wrapper {
   background: lightgray;
 }
 
-/* line 154, ../sass/app.scss */
+/* line 162, ../sass/app.scss */
 #countdown {
   text-indent: -99999px;
 }
 
-/* line 158, ../sass/app.scss */
+/* line 166, ../sass/app.scss */
 .active {
   background-color: #64B5F5;
 }
-/* line 160, ../sass/app.scss */
+/* line 168, ../sass/app.scss */
 .active .timer {
   color: #f5f5f5;
 }
-/* line 161, ../sass/app.scss */
+/* line 169, ../sass/app.scss */
 .active .timer:after {
   background: url(../img/clock.gif) no-repeat 98% center;
   content: '';
@@ -269,7 +277,7 @@ ul#containers-wrapper {
   height: 20px;
   margin-left: 1em;
 }
-/* line 171, ../sass/app.scss */
+/* line 179, ../sass/app.scss */
 .active .title,
 .active .description {
   background: white;
@@ -277,17 +285,17 @@ ul#containers-wrapper {
   box-shadow: inset 1px 2px 1px 0 rgba(0, 0, 0, 0.4);
 }
 
-/* line 179, ../sass/app.scss */
+/* line 187, ../sass/app.scss */
 .frozen {
   color: lightgray;
 }
 
-/* line 183, ../sass/app.scss */
+/* line 191, ../sass/app.scss */
 .dialog-confirm {
   height: auto;
 }
 
-/* line 187, ../sass/app.scss */
+/* line 195, ../sass/app.scss */
 .ac-results {
   border: 1px solid #cecece;
   width: 75%;
@@ -295,26 +303,26 @@ ul#containers-wrapper {
   overflow: auto;
   background: white;
 }
-/* line 193, ../sass/app.scss */
+/* line 201, ../sass/app.scss */
 .ac-results .suggestions {
   padding: 0;
 }
-/* line 195, ../sass/app.scss */
+/* line 203, ../sass/app.scss */
 .ac-results .suggestions .suggestion {
   padding: 5px;
   list-style-type: none;
 }
-/* line 198, ../sass/app.scss */
+/* line 206, ../sass/app.scss */
 .ac-results .suggestions .suggestion:hover {
   background: #f5f5f5;
 }
 
-/* line 204, ../sass/app.scss */
+/* line 212, ../sass/app.scss */
 .timer-container .ac-results {
   margin-top: -1em;
 }
 
-/* line 208, ../sass/app.scss */
+/* line 216, ../sass/app.scss */
 #last-saved,
 #total-time {
   /* 3 */
@@ -352,20 +360,20 @@ ul#containers-wrapper {
   float: left;
 }
 
-/* line 216, ../sass/app.scss */
+/* line 224, ../sass/app.scss */
 #total-time {
   clear: right;
   float: right;
 }
 
-/* line 221, ../sass/app.scss */
+/* line 229, ../sass/app.scss */
 #messages {
   color: #000;
   padding: 0.25em;
   text-align: center;
 }
 
-/* line 227, ../sass/app.scss */
+/* line 235, ../sass/app.scss */
 #footer {
   /* 3 */
   /* 3 */
@@ -395,28 +403,29 @@ ul#containers-wrapper {
   text-align: center;
   width: 100%;
 }
-/* line 235, ../sass/app.scss */
+/* line 243, ../sass/app.scss */
 #footer a {
   color: #f5f5f5;
   font-weight: normal;
 }
-/* line 238, ../sass/app.scss */
+/* line 246, ../sass/app.scss */
 #footer a:focus, #footer a:hover {
   color: #333;
   text-decoration: underline;
 }
 
 @media screen and (max-width: 750px) {
-  /* line 247, ../sass/app.scss */
+  /* line 255, ../sass/app.scss */
   .controls {
     position: relative;
     padding: 0;
     margin: 0;
     clear: both;
     width: 100%;
+    top: auto;
   }
 
-  /* line 254, ../sass/app.scss */
+  /* line 263, ../sass/app.scss */
   .button-form,
   .help-button {
     float: left;
@@ -424,9 +433,41 @@ ul#containers-wrapper {
     margin: 0.5%;
   }
 
-  /* line 260, ../sass/app.scss */
+  /* line 269, ../sass/app.scss */
   .containers {
     width: 100%;
     float: none;
+  }
+
+  /* line 273, ../sass/app.scss */
+  #masthead h1 {
+    font-size: 1.5em;
+  }
+
+  /* line 276, ../sass/app.scss */
+  #masthead > div.contained, #masthead > div#main-content {
+    position: relative;
+    width: auto;
+    padding: 0;
+  }
+  /* line 280, ../sass/app.scss */
+  #masthead > div.contained h1, #masthead > div#main-content h1 {
+    font-size: 2.5em;
+  }
+
+  /* line 284, ../sass/app.scss */
+  #masthead {
+    margin-bottom: 0;
+  }
+}
+@media screen and (min-width: 751px) and (max-width: 1200px) {
+  /* line 290, ../sass/app.scss */
+  #masthead h1 {
+    font-size: 1.5em;
+  }
+
+  /* line 293, ../sass/app.scss */
+  .controls {
+    top: 70px;
   }
 }
