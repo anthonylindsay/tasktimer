@@ -42,6 +42,7 @@ $('document').ready(function() {
 
       // Create the UI.
       app.add_help_button();
+      app.add_log_button()
       app.add_settings_button();
       app.add_total_button();
       app.add_global_stop();
@@ -176,6 +177,21 @@ $('document').ready(function() {
       }
     },
 
+    print_log : function() {
+      // Retrieve existing log.
+      var timer_log = JSON.parse(app.load_stored_data('timer_log'));
+      var output = '<ol id="log">';
+      if ((typeof timer_log != 'undefined') && (timer_log != false) && (timer_log != null)) {
+        var log_events = timer_log.values;
+
+        for (var i = log_events.length; i > 0; i--) {
+          output += '<li>' + log_events[i] + '</li>';
+        }
+      }
+      output += '</ol>';
+      return output;
+    },
+
     load_stored_data : function(key) {
       if ((typeof localStorage.getItem(key) != undefined) && (localStorage.getItem(key) != null) && (localStorage.getItem(key) != "null") && (localStorage.getItem(key) != "")) {
         return localStorage.getItem(key);
@@ -260,6 +276,24 @@ $('document').ready(function() {
         e.preventDefault();
         var dialog_width = window.innerWidth * 0.8;
         $('#help-text').dialog({ width: dialog_width });
+      });
+    },
+
+    add_log_button : function() {
+      $('#controls').prepend(log_html.button);
+      $('#controls').append(log_html.html);
+      $('#log-container').hide();
+      $('#log-button').click(function(e) {
+        e.preventDefault();
+        var dialog_width = window.innerWidth * 0.8;
+        var $log_container = $('#log-container');
+        var log_content = app.print_log();
+        $log_container.html(log_content);
+        $log_container.dialog({
+          modal: true,
+          title: 'System log',
+          width: dialog_width
+        });
       });
     },
 
