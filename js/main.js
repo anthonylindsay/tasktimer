@@ -150,7 +150,6 @@ $('document').ready(function() {
     clear_cache : function() {
       this.title_cache = [];
       this.description_cache = [];
-      // this.lookup_cache = {};
       localStorage.setItem('timer_title_cache', null);
       localStorage.setItem('timer_description_cache', null);
       app.message('Caches cleared');
@@ -161,8 +160,19 @@ $('document').ready(function() {
         var title = elem.find('.title').text();
         var now = new Date();
         var msg = now + ": " + event + " event logged for timer " + title;
-        localStorage.setItem('timer_log', JSON.stringify(msg));
-        console.log(msg);
+        // Retrieve existing log.
+        var timer_log = JSON.parse(app.load_stored_data('timer_log'));
+        if ((typeof timer_log == 'undefined') || (timer_log == false) || (timer_log == null)) {
+          timer_log = {'values':['log start']};
+        }
+        // Append new message.
+        timer_log.values.push(msg);
+        // Make sure it's limited to 100 entries.
+        if (timer_log.values.length > 100) {
+          timer_log.values.shift();
+        }
+        // Save the updated log again.
+        localStorage.setItem('timer_log', JSON.stringify(timer_log));
       }
     },
 
