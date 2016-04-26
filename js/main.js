@@ -748,6 +748,7 @@ $('document').ready(function() {
         modal: true,
         buttons: {
           "Confirm delete": function() {
+            app.write_log(null, 'delete all');
             $timers.remove();
             favicon.badge(0);
             $( this ).dialog( "close" );
