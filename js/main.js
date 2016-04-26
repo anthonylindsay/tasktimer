@@ -159,22 +159,26 @@ $('document').ready(function() {
     write_log: function(elem, event) {
       if ((typeof elem != 'undefined') && (typeof elem == 'object') && (elem != null)) {
         var title = elem.find('.title').text();
-        var now = new Date();
-        var msg = now + ": " + event + " event logged for timer " + title;
-        // Retrieve existing log.
-        var timer_log = JSON.parse(app.load_stored_data('timer_log'));
-        if ((typeof timer_log == 'undefined') || (timer_log == false) || (timer_log == null)) {
-          timer_log = {'values':['log start']};
-        }
-        // Append new message.
-        timer_log.values.push(msg);
-        // Make sure it's limited to 100 entries.
-        if (timer_log.values.length > 100) {
-          timer_log.values.shift();
-        }
-        // Save the updated log again.
-        localStorage.setItem('timer_log', JSON.stringify(timer_log));
       }
+      var now = new Date();
+
+      var msg = now + ": " + event + " event logged";
+      if (title) {
+        msg += " for timer <em>" + title + "</em>";
+      }
+      // Retrieve existing log.
+      var timer_log = JSON.parse(app.load_stored_data('timer_log'));
+      if ((typeof timer_log == 'undefined') || (timer_log == false) || (timer_log == null)) {
+        timer_log = {'values':['log start']};
+      }
+      // Append new message.
+      timer_log.values.push(msg);
+      // Make sure it's limited to 100 entries.
+      if (timer_log.values.length > 100) {
+        timer_log.values.shift();
+      }
+      // Save the updated log again.
+      localStorage.setItem('timer_log', JSON.stringify(timer_log));
     },
 
     print_log : function() {
@@ -444,7 +448,6 @@ $('document').ready(function() {
       // Log the creation.
       $containers = $('.timer-container');
       app.write_log($containers[$containers.length] - 1, 'create');
-      console.log($containers[$containers.length] - 1);
     },
 
     clear_selection: function() {
@@ -608,6 +611,7 @@ $('document').ready(function() {
       $this_container.removeClass('active');
       $this_container.find('.timer').runner('stop');
       $('#countdown').runner('stop');
+      app.write_log($this_container, 'freeze');
     },
 
     press_element: function(elem) {
@@ -707,6 +711,7 @@ $('document').ready(function() {
       $('#countdown').runner('stop');
       favicon.badge(0);
       app.change_page_title('Stopped');
+      app.write_log(null, 'stop all');
     },
 
     deactivate_all_containers : function() {
