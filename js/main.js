@@ -188,7 +188,7 @@ $('document').ready(function() {
       if ((typeof timer_log != 'undefined') && (timer_log != false) && (timer_log != null)) {
         var log_events = timer_log.values;
 
-        for (var i = log_events.length; i > 0; i--) {
+        for (var i = log_events.length - 1; i > 0; i--) {
           output += '<li>' + log_events[i] + '</li>';
         }
       }
