@@ -637,6 +637,7 @@ $('document').ready(function() {
         )
       );
       app.message('Time successfully shifted.');
+      app.write_log($target_timer.parent(), 'time shift');
     },
 
     unpress_elements: function() {
