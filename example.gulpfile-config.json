@@ -1,0 +1,8 @@
+{
+    "browserSync" : {
+      "proxy" : "mysite.drude"
+    },
+    "sass" : {
+      "outputStyle" : "compressed"
+    }
+}

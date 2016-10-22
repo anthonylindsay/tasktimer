@@ -10,13 +10,9 @@
         <title>Timer</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <link id="favicon" rel="icon" type="image/png" href="favicon.ico">
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/app.css">
-        <link rel="stylesheet" type="text/css" href="css/autocomplete-styles.css" />
+        <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="js/vendor/jquery-ui-1.10.4/css/ui-lightness/jquery-ui-1.10.4.min.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
@@ -25,19 +21,18 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
     <div id="page">
-        <div id="masthead">
-          <div class="contained">
-            <h1>Task Timer</h1>
+        <div id="masthead" class="masthead">
+          <h1 class="page-title">Task Timer</h1>
+          <div class="computed contained">
+            <div id="last-saved" class="last-saved"></div>
+            <div id="total-time" class="total-time"></div>
           </div>
         </div>
         <div id="main-content">
-          <div id="controls" class="controls">
-            <div id="last-saved"></div>
-            <div id="total-time"></div>
-            <div id="messages"></div>
-          </div>
-          <div class="containers">
-            <ul id="containers-wrapper"></ul>
+          <div id="controls" class="controls contained"></div>
+          <div id="messages"></div>
+          <div class="containers contained">
+            <ul id="containers-wrapper" class="containers-wrapper"></ul>
           </div>
         </div>
         <div id="countdown"></div>
