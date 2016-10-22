@@ -78,7 +78,7 @@ gulp.task('watch', function() {
   gulp.watch(['images/sprites/*.png'], ['sprite']);
   gulp.watch(["sass/**/*.scss", "sprites.scss", 'images/**/*'], ['styles:dev']);
   // gulp.watch(["js/**/*.js", 'templates/**/*.html.twig']).on('change', browserSync.reload);
-  gulp.watch(["sass/**/*.scss", "js/**/*.js", 'templates/**/*.html.twig']).on('change', browserSync.reload);
+  gulp.watch(["sass/**/*.scss", "js/**/*.js", 'index.html']).on('change', browserSync.reload);
 
 });
 
