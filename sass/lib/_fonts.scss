@@ -1,0 +1,39 @@
+/**
+ * @file
+ * This file lists the fonts that we are going to use in the theme.
+ */
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+//
+// Font faces, stacks and sizes.
+//
+
+$base-font-size:   14px; // The font size set on the root html element.
+$base-line-height: 24px; // This line-height determines the basic unit of vertical rhythm.
+
+$h1-font-size: 2    * $base-font-size;
+$h2-font-size: 1.5  * $base-font-size;
+$h3-font-size: 1.25 * $base-font-size;
+$h4-font-size: 1.15 * $base-font-size;
+$h5-font-size: 1    * $base-font-size;
+$h6-font-size: 0.85 * $base-font-size;
+
+
+// First, let's create some font stacks.
+$times-new-roman: "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
+$times:           Times, "Times New Roman", Georgia, "DejaVu Serif", serif;
+$georgia:         Georgia, "Times New Roman", "DejaVu Serif", serif;
+
+$verdana:         Verdana, Tahoma, "DejaVu Sans", sans-serif;
+$tahoma:          Tahoma, Verdana, "DejaVu Sans", sans-serif;
+$helvetica:       Helvetica, Arial, "Nimbus Sans L", sans-serif;
+$arial:           Arial, Helvetica, "Nimbus Sans L", sans-serif;
+
+$font-primary:          Roboto, $helvetica;
+
+html {
+  font-family: $font-primary;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+}

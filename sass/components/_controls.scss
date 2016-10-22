@@ -1,0 +1,15 @@
+/**
+ * @file This file is to hold the styling for the .controls class
+ */
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 2rem;
+  width: 100%;
+}
+
+.controls button {
+  @extend %button;
+  background: $white;
+}

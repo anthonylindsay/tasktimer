@@ -1,0 +1,74 @@
+/**
+ * @file
+ * This file creates helper classes that can be added to items to show/hide
+ * them depending on the screen width being viewed.
+ */
+
+.small-screen-only {
+  @include breakpoint($medium) {
+    display: none;
+  }
+  @include breakpoint($large) {
+    display: none;
+  }
+}
+
+.small-medium-screen-only {
+  @include breakpoint($large) {
+    display: none;
+  }
+}
+
+.large-screen-only {
+  display: none;
+  @include breakpoint($large) {
+    display: block;
+  }
+}
+
+.large-medium-screen-only {
+  display: none;
+  @include breakpoint($medium) {
+    display: block;
+  }
+}
+
+.hide-overflow {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+// Turns off the element-invisible effect.
+.visually-hidden-off {
+  position: static !important;
+  clip: auto;
+  height: auto;
+  width: auto;
+  overflow: auto;
+}
+
+// Makes an element visually hidden by default, but visible when focused.
+.element-focusable {
+  @extend .visually-hidden;
+  &:active,
+  &:focus {
+    @extend .visually-hidden-off;
+  }
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: inline;
+}

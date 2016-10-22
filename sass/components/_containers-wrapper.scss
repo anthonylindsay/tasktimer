@@ -1,0 +1,12 @@
+/**
+ * @file This file is to hold the styling for the container-wrapper class
+ */
+
+.containers-wrapper {
+  @include breakpoint($medium) {
+    display: flex;
+    flex-flow: wrap;
+    margin: 0;
+    padding: 0;
+  }
+}
