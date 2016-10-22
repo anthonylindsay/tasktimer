@@ -555,7 +555,7 @@ $('document').ready(function() {
       $new_timer_container.click(function(e) {
         app.select_container($(this));
       });
-      $new_timer_container.find('.description').hide();
+      // $new_timer_container.find('.description').hide();
       // Make this containers delete and merge buttons work.
       $new_timer_container.find('.delete.button').click(function(e) {
         var $target_timer = $(this);
